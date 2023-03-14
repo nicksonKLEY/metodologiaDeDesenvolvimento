@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import DataService from './Services/Service'
 
 function App() {
+  DataService.test()
+  
   return (
     <div className="App">
       <header className="App-header">
