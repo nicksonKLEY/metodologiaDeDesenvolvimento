@@ -1,3 +1,11 @@
+import RoutesApp from './routes/Route'
+import AuthProvider from './contexts/auth'
+import './App.css'
+
 export function App() {
-  return <h1>Hello World</h1>
+  return (
+    <AuthProvider>
+      <RoutesApp />
+    </AuthProvider>
+  )
 }
