@@ -1,21 +1,23 @@
 import styled, { keyframes } from 'styled-components'
-import { fadeInLeft, fadeInDown, fadeInRight } from 'react-animations'
+import { fadeInLeft, fadeInDown } from 'react-animations'
 
 const FadeInLeft = keyframes`${fadeInLeft}`
 const FadeInDown = keyframes`${fadeInDown}`
-const FadeInRight = keyframes`${fadeInRight}`
 
 export const Container = styled.div`
+  padding: 0;
+  margin: 0;
   animation: 0.3s ${FadeInLeft};
   height: 50px;
-  width: 200px;
+  width: 15%;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #1f2442;
   border-radius: 0px 10px 10px 0px;
   flex-direction: row;
-  position: absolute;
+  position: fixed;
+  overflow: auto;
 `
 export const TitlePage = styled.h1`
   color: #5ef7a0;
@@ -25,23 +27,23 @@ export const TitlePage = styled.h1`
 export const ContainerHeight = styled.div`
   animation: 0.2s ${FadeInDown};
   height: 100%;
-  width: 200px;
+  width: 15%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   background-color: #1f2442;
   border-radius: 0px 10px 10px 0px;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
+  overflow: auto;
 `
 export const ViewTitle = styled.div`
   width: 100%;
   height: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin-left: 20px;
 `
 export const ViewElements = styled.div`
   width: 100%;
@@ -49,16 +51,9 @@ export const ViewElements = styled.div`
   justify-content: flex-end;
   display: flex;
   margin-top: 20px;
+  flex-direction: row;
 `
-export const Elements = styled.span`
-  animation: 0.7s ${FadeInRight};
-  background-color: #32385a;
-  width: 90%;
-  height: 40px;
-  display: flex;
-  border-end-start-radius: 10px;
-  border-start-start-radius: 10px;
-`
+
 export const ContainerInfo = styled.div`
   width: 100%;
   height: 60%;
@@ -71,21 +66,26 @@ export const Footer = styled.footer`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `
 export const Logo = styled.img`
-  width: 70px;
-  height: 40px;
+  width: 60px;
+  height: 30px;
+  display: block;
 `
 export const BtnExit = styled.button`
   color: #5ef7a0;
   font-size: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #1f2442;
   border: none;
   width: 70px;
   cursor: pointer;
-  margin-right: 10px;
+  &:hover {
+    scale: 1.1;
+    transition: scale 300ms;
+  }
 `
 export const ColorIconOpen = '#5ef7a0'

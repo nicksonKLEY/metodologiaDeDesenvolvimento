@@ -8,7 +8,6 @@ import {
   Container,
   TitlePage,
   ContainerHeight,
-  Elements,
   ViewTitle,
   ViewElements,
   ContainerInfo,
@@ -16,8 +15,8 @@ import {
   Logo,
   BtnExit,
 } from './style'
-export default function Sidbar() {
-  const [sidebar, setSidebar] = useState(true)
+export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
+  const [sidebar, setSidebar] = useState(false)
 
   const showSiderbar = () => setSidebar(!sidebar)
 
@@ -48,9 +47,8 @@ export default function Sidbar() {
               />
             </ViewTitle>
 
-            <ViewElements>
-              <Elements />
-            </ViewElements>
+            <ViewElements>{itemNavigate1}</ViewElements>
+            <ViewElements>{itemNavigate2}</ViewElements>
           </ContainerInfo>
 
           <Footer>

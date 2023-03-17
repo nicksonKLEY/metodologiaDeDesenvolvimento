@@ -1,14 +1,15 @@
-import { Container } from './style'
-import Sidbar from '../../components/Sidebar'
+import { ViewLogo, Logo, ContainerMain } from './style'
+import NavMaster from '../../components/NavMaster'
+import LogoImg from '../../assets/imgs/logo.png'
+
 export default function DashboardApp() {
   return (
-    <>
-      <Sidbar />
-      <Container>
-        <div>
-          <h1>teste</h1>
-        </div>
-      </Container>
-    </>
+    <ContainerMain>
+      <NavMaster />
+
+      <ViewLogo>
+        <Logo src={LogoImg} />
+      </ViewLogo>
+    </ContainerMain>
   )
 }
