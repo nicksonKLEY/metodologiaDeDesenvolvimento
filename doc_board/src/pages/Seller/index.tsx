@@ -34,7 +34,7 @@ export default function Seller() {
               situation="pending"
             />
             <ProposalInformation
-              name="João Bezerra"
+              name="Maria do Perpetuo"
               bank="Safra"
               status="Proposta Digitada"
               situation="typing"
