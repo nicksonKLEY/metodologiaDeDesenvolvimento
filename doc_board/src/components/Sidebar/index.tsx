@@ -25,7 +25,7 @@ export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
       {sidebar ? (
         <Container>
           <ViewTitle>
-            <TitlePage>Master</TitlePage>
+            <TitlePage>Vendedor</TitlePage>
             <FaBars
               onClick={showSiderbar}
               cursor={'pointer'}
@@ -38,7 +38,7 @@ export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
         <ContainerHeight>
           <ContainerInfo>
             <ViewTitle>
-              <TitlePage>Master</TitlePage>
+              <TitlePage>Vendedor</TitlePage>
               <IoCloseSharp
                 onClick={showSiderbar}
                 cursor={'pointer'}
