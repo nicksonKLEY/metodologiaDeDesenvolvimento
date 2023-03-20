@@ -1,4 +1,4 @@
-import { Container } from './styles'
+import { Container, Bank } from './styles'
 
 interface Props {
   name: string
@@ -11,7 +11,7 @@ export function ProposalInformation({ situation, name, bank, status }: Props) {
   return (
     <Container type={situation}>
       <p>{name}</p>
-      <p>{bank}</p>
+      <Bank>{bank}</Bank>
       <span>{status}</span>
     </Container>
   )

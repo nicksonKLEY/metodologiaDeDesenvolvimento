@@ -29,3 +29,7 @@ export const Container = styled.div<ProposalStatusColor>`
     text-align: end;
   }
 `
+
+export const Bank = styled.p`
+  align-self: center;
+`
