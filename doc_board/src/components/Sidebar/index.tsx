@@ -25,11 +25,10 @@ export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
       {sidebar ? (
         <Container>
           <ViewTitle>
-            <TitlePage>Master</TitlePage>
             <FaBars
               onClick={showSiderbar}
               cursor={'pointer'}
-              size={25}
+              size={20}
               color={ColorIconOpen}
             />
           </ViewTitle>
