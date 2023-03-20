@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Dashboard from '../pages/Dashboard'
 import SingIn from '../pages/SignIn'
-import Error404 from '../pages/Erro404'
+import Error404 from '../components/Erro404'
 import RouteWrapper from './index'
+
 import RegisterEmployee from '../pages/Dashboard/RegisterUser/index'
 export default function RoutesAppPrivate() {
   return (
