@@ -10,9 +10,9 @@ export const Overlay = styled(Dialog.Overlay)`
   background: rgba(0, 0, 0, 0.5);
 `
 export const Content = styled(Dialog.Content)`
-  min-width: 28rem;
+  min-width: 29rem;
   border-radius: 6px;
-  padding: 2.5rem 2rem;
+  padding: 4rem 2rem;
   background-color: #e6e7e8;
 
   position: fixed;
@@ -56,6 +56,12 @@ export const WrapperInput = styled.div`
   gap: 0.6rem;
 `
 
+export const AttachmentLabel = styled.label`
+  display: inline-block;
+  margin-top: 1rem;
+  cursor: pointer;
+`
+
 export const AttachmentsInput = styled.input`
   display: none;
 `
@@ -85,6 +91,8 @@ export const ButtonSubmit = styled.button`
   border: 1px solid #6c726e;
   transition: transform 0.2s;
 
+  font-weight: bold;
+
   cursor: pointer;
 
   &:hover {
@@ -101,4 +109,16 @@ export const PdfList = styled.ul`
   > li {
     font-size: 0.8rem;
   }
+`
+
+export const CloseButton = styled(Dialog.Close)`
+  position: absolute;
+  background: #fff;
+  border: none;
+  top: -0.5rem;
+  right: -0.5rem;
+  line-height: 0;
+  cursor: pointer;
+
+  border-radius: 1.9rem;
 `
