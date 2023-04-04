@@ -4,6 +4,7 @@ import {
   BtnRegister,
   ContainerList,
   ContainerMain,
+  ContainerContent,
   Container,
   ListContain,
   HeaderList,
@@ -45,6 +46,7 @@ type CreateEmployeesData = {
 }
 
 const createEmployeeSchema = yup.object().shape({
+  id: yup.number(),
   nome: yup
     .string()
     .required('Nome é obrigatório')
@@ -81,20 +83,7 @@ export default function RegisterEmployee() {
       senha: '654321',
     },
   ])
-  // const elements = [
-  //   {
-  //     nome: 'Estevao Angeluz',
-  //     cpf: '000.000.000-45',
-  //     nivel_acesso: 'Vendedor',
-  //     senha: 123456,
-  //   },
-  //   {
-  //     nome: 'Matheus Silva',
-  //     cpf: '111.111.111-11',
-  //     nivel_acesso: 'Digitador',
-  //     senha: 654321,
-  //   },
-  // ]
+
   const [modal, setModal] = useState(false)
 
   const {
@@ -133,55 +122,57 @@ export default function RegisterEmployee() {
 
   return (
     <ContainerMain>
-      <NavMaster />
+      <ContainerContent>
+        <NavMaster />
 
-      <Container>
-        <ContainerList>
-          {' '}
-          <BtnRegister onClick={() => setModal(true)}>Cadastrar</BtnRegister>
-          <ViewList>
-            <ListContain>
-              <HeaderList>
-                <NameUserHeader>
-                  <TextHeader>NOME</TextHeader>
-                </NameUserHeader>
-                <CPFUserHeader>
-                  <TextHeader>CPF</TextHeader>
-                </CPFUserHeader>
-                <AcessLeveluserHeader>
-                  <TextHeader>NÍVEL DE ACESSO</TextHeader>
-                </AcessLeveluserHeader>
-                <PasswordUser>
-                  <TextHeader>SENHA</TextHeader>
-                </PasswordUser>
-                <ActionPainel>
-                  <TextHeader>AÇÃO</TextHeader>
-                </ActionPainel>
-              </HeaderList>
-              <ContentInfos>
-                {elements.map((item) => (
-                  <FieldData key={item.nome}>
-                    <FieldName>{item.nome}</FieldName>
-                    <FieldCPf>{item.cpf}</FieldCPf>
-                    <FieldAcessLevel>
-                      {item.acessLevel.toUpperCase()}
-                    </FieldAcessLevel>
-                    <FieldPassword>{item.senha}</FieldPassword>
-                    <FieldActionPainel>
-                      <BtnAction>
-                        <BsPencil color={ColorIconAction} size={14} />
-                      </BtnAction>
-                      <BtnAction onClick={removeItem}>
-                        <BsFillTrashFill color={ColorIconAction} size={14} />
-                      </BtnAction>
-                    </FieldActionPainel>
-                  </FieldData>
-                ))}
-              </ContentInfos>
-            </ListContain>
-          </ViewList>
-        </ContainerList>
-      </Container>
+        <Container>
+          <ContainerList>
+            {' '}
+            <BtnRegister onClick={() => setModal(true)}>Cadastrar</BtnRegister>
+            <ViewList>
+              <ListContain>
+                <HeaderList>
+                  <NameUserHeader>
+                    <TextHeader>NOME</TextHeader>
+                  </NameUserHeader>
+                  <CPFUserHeader>
+                    <TextHeader>CPF</TextHeader>
+                  </CPFUserHeader>
+                  <AcessLeveluserHeader>
+                    <TextHeader>NÍVEL DE ACESSO</TextHeader>
+                  </AcessLeveluserHeader>
+                  <PasswordUser>
+                    <TextHeader>SENHA</TextHeader>
+                  </PasswordUser>
+                  <ActionPainel>
+                    <TextHeader>AÇÃO</TextHeader>
+                  </ActionPainel>
+                </HeaderList>
+                <ContentInfos>
+                  {elements.map((item) => (
+                    <FieldData key={item.nome}>
+                      <FieldName>{item.nome}</FieldName>
+                      <FieldCPf>{item.cpf}</FieldCPf>
+                      <FieldAcessLevel>
+                        {item.acessLevel.toUpperCase()}
+                      </FieldAcessLevel>
+                      <FieldPassword>{item.senha}</FieldPassword>
+                      <FieldActionPainel>
+                        <BtnAction>
+                          <BsPencil color={ColorIconAction} size={14} />
+                        </BtnAction>
+                        <BtnAction onClick={removeItem}>
+                          <BsFillTrashFill color={ColorIconAction} size={14} />
+                        </BtnAction>
+                      </FieldActionPainel>
+                    </FieldData>
+                  ))}
+                </ContentInfos>
+              </ListContain>
+            </ViewList>
+          </ContainerList>
+        </Container>
+      </ContainerContent>
       {modal && (
         <Modal
           closeModalCopm={() => setModal(false)}
