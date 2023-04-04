@@ -20,9 +20,9 @@ export const ViewLogo = styled.div`
   justify-content: center;
 `
 export const Logo = styled.img`
-  width: 250px;
-  height: 190px;
-  margin-bottom: 30px;
+  width: 25rem;
+  height: 19rem;
+  margin-bottom: 3rem;
   opacity: 0.1;
 `
 export const ColorIcon = '#5ef7a0'

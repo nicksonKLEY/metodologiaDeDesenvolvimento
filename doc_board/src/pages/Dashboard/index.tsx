@@ -1,15 +1,12 @@
-import { ViewLogo, Logo, ContainerMain, Container } from './style'
+import { ContainerMain, Container } from './style'
 import NavMaster from '../../components/NavMaster'
-import LogoImg from '../../assets/imgs/logo.png'
-
+import RegisterEmployee from './RegisterUser'
 export default function DashboardApp() {
   return (
     <ContainerMain>
       <NavMaster />
       <Container>
-        <ViewLogo>
-          <Logo src={LogoImg} />
-        </ViewLogo>
+        <RegisterEmployee />
       </Container>
     </ContainerMain>
   )
