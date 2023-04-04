@@ -12,16 +12,16 @@ export const ViewLink = styled.div`
   background-color: #32385a;
   animation: 0.7s ${FadeInRight};
   width: 100%;
-  height: 40px;
+  height: 4rem;
   display: flex;
-  border-end-start-radius: 10px;
-  border-start-start-radius: 10px;
+  border-end-start-radius: 1rem;
+  border-start-start-radius: 1rem;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 1rem;
   @media (max-width: 768px) {
     width: 100%;
-    height: 30px;
-    margin-left: 10px;
+    height: 3rem;
+    margin-left: 1rem;
   }
 `
 export const TitleLink = styled(NavLink)`
@@ -44,14 +44,14 @@ export const TitleLink = styled(NavLink)`
   cursor: pointer;
   width: 80%;
   display: flex;
-  font-size: 20px;
+  font-size: 2rem;
   @media (max-width: 768px) {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 `
 export const IconView = styled.span`
   width: 30%;
-  height: 40px;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;

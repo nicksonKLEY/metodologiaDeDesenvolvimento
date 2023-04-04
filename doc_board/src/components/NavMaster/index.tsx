@@ -1,6 +1,6 @@
 import Sidbar from '../Sidebar'
 import { ColorIcon, TitleLink, IconView, ViewLink } from './style'
-import { AiOutlineUser, AiOutlineSetting } from 'react-icons/ai'
+import { AiOutlineUser } from 'react-icons/ai'
 import React from 'react'
 
 export default function NavMaster() {
@@ -13,21 +13,15 @@ export default function NavMaster() {
         itemNavigate1={
           <ViewLink>
             {' '}
-            <IconView>
-              <AiOutlineUser color={ColorIcon} size={25} />
-            </IconView>
-            <TitleLink to="/registerEmployee">Usuário</TitleLink>
+            <TitleLink to="/registerEmployee">
+              <IconView>
+                <AiOutlineUser color={ColorIcon} size={25} />
+              </IconView>
+              Usuário
+            </TitleLink>
           </ViewLink>
         }
-        itemNavigate2={
-          <ViewLink>
-            {' '}
-            <IconView>
-              <AiOutlineSetting color={ColorIcon} size={25} />
-            </IconView>
-            <TitleLink to="/ConfigDashboard">Config</TitleLink>
-          </ViewLink>
-        }
+        tPage={'Master'}
       />
     </React.Fragment>
   )
