@@ -21,7 +21,6 @@ export default function SingIn() {
 
   function HandleLogin(e: { preventDefault: () => void }) {
     e.preventDefault()
-    alert('teste')
   }
 
   return (

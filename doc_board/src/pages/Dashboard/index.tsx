@@ -1,14 +1,13 @@
-import { Container } from './style'
-import Sidbar from '../../components/Sidebar'
+import { ContainerMain, Container } from './style'
+import NavMaster from '../../components/NavMaster'
+import RegisterEmployee from './RegisterUser'
 export default function DashboardApp() {
   return (
-    <>
-      <Sidbar />
+    <ContainerMain>
+      <NavMaster />
       <Container>
-        <div>
-          <h1>teste</h1>
-        </div>
+        <RegisterEmployee />
       </Container>
-    </>
+    </ContainerMain>
   )
 }
