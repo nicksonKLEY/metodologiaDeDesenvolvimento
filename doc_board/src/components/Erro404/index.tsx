@@ -7,7 +7,7 @@ export default function Error404() {
       <Msg>Erro</Msg>
       <Title>404</Title>
       <Msg>Rota inexistente</Msg>
-      <GoBack to="/dashboard"> voltar</GoBack>
+      <GoBack to="/registerEmployee"> voltar</GoBack>
     </Container>
   )
 }

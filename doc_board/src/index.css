@@ -13,7 +13,9 @@ body {
   background-color:#32385A;
   box-sizing: border-box;
 }
-
+:root{
+  font-size: 62.5%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

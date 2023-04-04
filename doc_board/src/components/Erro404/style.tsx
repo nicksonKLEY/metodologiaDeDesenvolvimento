@@ -10,29 +10,29 @@ export const Container = styled.div`
   flex-direction: column;
 `
 export const Title = styled.h1`
-  font-size: 50px;
-  letter-spacing: 8px;
+  font-size: 5rem;
+  letter-spacing: 0.8rem;
   color: #fff;
 `
 export const Msg = styled.span`
-  margin-top: 10px;
+  margin-top: 1rem;
   color: #fff;
   font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 3px;
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
 `
 export const GoBack = styled(Link)`
-  margin-top: 20px;
-  width: 240px;
-  height: 50px;
+  margin-top: 2rem;
+  width: 24rem;
+  height: 5rem;
   color: #2fe57e;
   background-color: #1f2442;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: 20px;
-  font-size: 30px;
+  border-radius: 2rem;
+  font-size: 3rem;
   cursor: pointer;
 `
 export const ColorIcon = '#5ef7a0'
