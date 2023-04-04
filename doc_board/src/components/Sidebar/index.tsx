@@ -15,7 +15,12 @@ import {
   Logo,
   BtnExit,
 } from './style'
-export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
+interface namePageProps {
+  tPage: string
+  itemNavigate1: any
+}
+
+export default function Sidbar({ tPage, itemNavigate1 }: namePageProps) {
   const [sidebar, setSidebar] = useState(false)
 
   const showSiderbar = () => setSidebar(!sidebar)
@@ -37,7 +42,7 @@ export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
         <ContainerHeight>
           <ContainerInfo>
             <ViewTitle>
-              <TitlePage>Master</TitlePage>
+              <TitlePage>{tPage}</TitlePage>
               <IoCloseSharp
                 onClick={showSiderbar}
                 cursor={'pointer'}
@@ -47,7 +52,6 @@ export default function Sidbar({ itemNavigate1, itemNavigate2 }: any) {
             </ViewTitle>
 
             <ViewElements>{itemNavigate1}</ViewElements>
-            <ViewElements>{itemNavigate2}</ViewElements>
           </ContainerInfo>
 
           <Footer>
