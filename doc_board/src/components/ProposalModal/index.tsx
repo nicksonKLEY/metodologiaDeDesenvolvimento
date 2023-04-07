@@ -20,14 +20,15 @@ import {
   PdfList,
   CloseButton,
   AttachmentLabel,
+  ErrorMessage,
 } from './styles'
 
 const newProposalSchema = z.object({
-  name: z.string(),
-  cpf: z.string(),
-  phone: z.number(),
+  name: z.string().nonempty('Nome é obrigatório'),
+  cpf: z.string().nonempty('CPF é obrigatório'),
+  phone: z.string().nonempty('Telefone é obrigatório'),
   price: z.number(),
-  bank: z.string(),
+  bank: z.string().nonempty('Banco é obrigatório'),
 })
 
 type NewProposalFormInput = z.infer<typeof newProposalSchema>
@@ -35,7 +36,11 @@ type NewProposalFormInput = z.infer<typeof newProposalSchema>
 export function ProposalModal() {
   const [fileNames, setFileNames] = useState<string[]>([])
 
-  const { register } = useForm<NewProposalFormInput>({
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<NewProposalFormInput>({
     resolver: zodResolver(newProposalSchema),
   })
 
@@ -45,6 +50,10 @@ export function ProposalModal() {
       const newFileNames = Array.from(files).map((file) => file.name)
       setFileNames([...fileNames, ...newFileNames])
     }
+  }
+
+  function handleNewProposal(data: NewProposalFormInput) {
+    console.log(data)
   }
 
   return (
@@ -59,35 +68,28 @@ export function ProposalModal() {
         <Title>Nova Proposta</Title>
 
         <form>
-          <input
-            type="text"
-            placeholder="Nome"
-            required
-            {...register('name')}
-          />
-          <input type="text" placeholder="CPF" required {...register('cpf')} />
+          <input type="text" placeholder="Nome" {...register('name')} />
+          <input type="text" placeholder="CPF" {...register('cpf')} />
 
           <WrapperInput>
-            <input
-              type="text"
-              placeholder="Telefone"
-              required
-              {...register('phone')}
-            />
-            <input
-              type="text"
-              placeholder="Valor"
-              required
-              {...register('price')}
-            />
+            <div>
+              <input
+                type="text"
+                placeholder="Telefone"
+                {...register('phone')}
+              />
+
+              {errors.phone && (
+                <ErrorMessage>{errors.phone.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div>
+              <input type="text" placeholder="Valor" {...register('price')} />
+            </div>
           </WrapperInput>
 
-          <input
-            type="text"
-            placeholder="Banco"
-            required
-            {...register('bank')}
-          />
+          <input type="text" placeholder="Banco" {...register('bank')} />
 
           <AttachmentLabel htmlFor="anexos">
             Anexos <FaPaperclip size={10} color="#1f2843" />
@@ -95,7 +97,6 @@ export function ProposalModal() {
           <AttachmentsInput
             id="anexos"
             type="file"
-            required
             onChange={handleFileChange}
             multiple
           />
@@ -108,7 +109,7 @@ export function ProposalModal() {
             </PdfList>
           )}
 
-          <ButtonSubmitContainer>
+          <ButtonSubmitContainer onClick={handleSubmit(handleNewProposal)}>
             <ButtonSubmit>Gravar</ButtonSubmit>
           </ButtonSubmitContainer>
         </form>
