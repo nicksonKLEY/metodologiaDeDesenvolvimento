@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import {
   ViewModal,
   ViewBtnExit,
@@ -12,7 +13,7 @@ import {
 interface IsOPen {
   closeModalCopm: () => void
   TextButton: string
-  conteudo: any
+  conteudo: ReactNode
   TxtTitle: string
   submitAction: (e: any) => void
 }

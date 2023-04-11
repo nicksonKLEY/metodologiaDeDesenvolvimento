@@ -6,18 +6,18 @@ export const ContainerModal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #66698487;
+  background-color: #0d0f21c0;
   position: absolute;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
 `
 export const ViewModal = styled.div`
+  box-sizing: border-box;
   width: 45rem;
   height: 50rem;
   background-color: #e6e7e8;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   box-shadow: 0rem 0rem 2rem #2225442e;
   align-items: center;
   justify-content: center;
