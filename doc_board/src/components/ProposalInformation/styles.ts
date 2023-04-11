@@ -5,9 +5,11 @@ interface ProposalStatusColor {
 }
 
 export const Container = styled.div<ProposalStatusColor>`
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
   background-color: #1f2442;
   border-radius: 1rem;
+
+  font-size: 1.4rem;
 
   margin-bottom: 0.8rem;
 
