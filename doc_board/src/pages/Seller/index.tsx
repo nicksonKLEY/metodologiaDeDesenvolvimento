@@ -1,13 +1,17 @@
-import { Container, Content, ContainerStatus } from './styles'
+import { Container, Content, ContainerStatus, Wrapper } from './styles'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
 import { ProposalInformation } from '../../components/ProposalInformation'
 import { ProposalModal } from '../../components/ProposalModal'
 
+import { dataSituation } from '../../utils/dataSituation'
+import NavSeller from '../../components/NavSeller'
+
 export default function Seller() {
   return (
-    <>
+    <Wrapper>
+      <NavSeller />
       <Container>
         <Content>
           <Dialog.Root>
@@ -19,33 +23,18 @@ export default function Seller() {
           </Dialog.Root>
 
           <ContainerStatus>
-            <ProposalInformation
-              name="Raimundo Nonato"
-              bank="Daycoval"
-              status="Aguardando digitação"
-              situation="waiting"
-            />
-            <ProposalInformation
-              name="Maria do Perpetuo"
-              bank="Pan"
-              status="Documento pendente"
-              situation="pending"
-            />
-            <ProposalInformation
-              name="Maria do Perpetuo"
-              bank="Safra"
-              status="Proposta Digitada"
-              situation="typing"
-            />
-            <ProposalInformation
-              name="Terezinha Bentes"
-              bank="BMC"
-              status="Proposta Recusada"
-              situation="refused"
-            />
+            {dataSituation.map((proposal) => (
+              <ProposalInformation
+                key={proposal.id}
+                name={proposal.name}
+                bank={proposal.bank}
+                status={proposal.status}
+                situation={proposal.situation}
+              />
+            ))}
           </ContainerStatus>
         </Content>
       </Container>
-    </>
+    </Wrapper>
   )
 }

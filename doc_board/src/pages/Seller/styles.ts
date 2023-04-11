@@ -1,14 +1,23 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
+  display: flex;
+  /* grid-template-columns: 1fr 1fr; */
   height: 100vh;
   width: 100%;
-  padding: 0 18rem;
+`
+
+export const Container = styled.div`
+  padding: 0 8rem;
+  /* background-color: red; */
+  width: 100%;
 
   > h2 {
     font-size: 1rem;
     color: red;
   }
+
+  /* background-color: red; */
 `
 
 export const Content = styled.main`
@@ -20,7 +29,7 @@ export const Content = styled.main`
     color: #38ac72;
     font-weight: normal;
 
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.4rem;
 
     border: none;
     border-radius: 0.6rem;
