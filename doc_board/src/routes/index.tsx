@@ -1,9 +1,11 @@
 import { Navigate } from 'react-router-dom'
+// import { AuthContext } from '../contexts/auth'
+// import { useContext } from 'react'
 
 export default function RouteWrapper({ children }: any) {
-  const loading = false
   const signed = true
-  // const {signed} = useContext(AuthContext)
+  const loading = false
+  // const { signed, loading } = useContext(AuthContext)
 
   if (loading) {
     return (
@@ -12,6 +14,7 @@ export default function RouteWrapper({ children }: any) {
       </div>
     )
   }
+
   if (signed) {
     return children
   }
