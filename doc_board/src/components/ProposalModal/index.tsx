@@ -94,7 +94,7 @@ export function ProposalModal() {
           <input type="text" placeholder="Banco" {...register('bank')} />
 
           <AttachmentLabel htmlFor="anexos">
-            Anexos <FaPaperclip size={10} color="#1f2843" />
+            Anexos <FaPaperclip size={13} color="#1f2843" />
           </AttachmentLabel>
           <AttachmentsInput
             id="anexos"

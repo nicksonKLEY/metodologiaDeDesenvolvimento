@@ -23,7 +23,7 @@ export const Content = styled(Dialog.Content)`
   > form {
     input {
       width: 100%;
-      padding: 0.5rem;
+      padding: 1.4rem;
 
       background-color: #ffffff;
 
@@ -35,14 +35,14 @@ export const Content = styled(Dialog.Content)`
 
       &::placeholder {
         color: #2e334e;
-        font-size: 1rem;
+        font-size: 1.3rem;
       }
     }
   }
 `
 
 export const Title = styled(Dialog.Title)`
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   color: #3d415b;
   text-align: center;
 
@@ -54,12 +54,18 @@ export const WrapperInput = styled.div`
   flex-wrap: nowrap;
   display: flex;
   gap: 0.6rem;
+
+  > div {
+    width: 100%;
+  }
 `
 
 export const AttachmentLabel = styled.label`
   display: inline-block;
   margin-top: 1rem;
   cursor: pointer;
+
+  font-size: 1.4rem;
 `
 
 export const AttachmentsInput = styled.input`
@@ -67,7 +73,7 @@ export const AttachmentsInput = styled.input`
 `
 
 export const EmptyFile = styled.p`
-  font-size: 0.7rem;
+  font-size: 1rem;
   margin-top: 0.1rem;
 `
 
@@ -81,7 +87,7 @@ export const ButtonSubmitContainer = styled.div`
 `
 
 export const ButtonSubmit = styled.button`
-  padding: 0.4rem 4rem;
+  padding: 0.6rem 6rem;
 
   background-color: #40cd7e;
   color: #1f2843;
@@ -107,7 +113,7 @@ export const PdfList = styled.ul`
   margin-top: 0.4rem;
 
   > li {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
   }
 `
 
@@ -126,5 +132,4 @@ export const CloseButton = styled(Dialog.Close)`
 export const ErrorMessage = styled.span`
   font-size: 0.9rem;
   color: red;
-  /* text-align: center; */
 `
