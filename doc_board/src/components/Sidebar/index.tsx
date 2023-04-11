@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { IoCloseSharp, IoExitOutline } from 'react-icons/io5'
 
@@ -17,7 +17,7 @@ import {
 } from './style'
 interface namePageProps {
   tPage: string
-  itemNavigate1: any
+  itemNavigate1: ReactNode
 }
 
 export default function Sidbar({ tPage, itemNavigate1 }: namePageProps) {
