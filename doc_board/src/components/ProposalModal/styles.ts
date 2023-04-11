@@ -122,3 +122,9 @@ export const CloseButton = styled(Dialog.Close)`
 
   border-radius: 1.9rem;
 `
+
+export const ErrorMessage = styled.span`
+  font-size: 0.9rem;
+  color: red;
+  /* text-align: center; */
+`

@@ -69,6 +69,8 @@ export function ProposalModal() {
 
         <form>
           <input type="text" placeholder="Nome" {...register('name')} />
+
+          {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
           <input type="text" placeholder="CPF" {...register('cpf')} />
 
           <WrapperInput>
