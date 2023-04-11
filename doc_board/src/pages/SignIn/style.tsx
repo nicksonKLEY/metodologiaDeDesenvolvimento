@@ -11,10 +11,11 @@ export const Container = styled.div`
 `
 
 export const ViewSingIn = styled.form`
-  height: 45rem;
-  width: 33rem;
+  height: 53rem;
+  width: 40rem;
   background-color: #1f2442;
-  border-radius: 2rem;
+  box-shadow: 0rem 0rem 5rem #1e2340c3;
+  border-radius: 2.5rem;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -36,33 +37,35 @@ export const ViewInput = styled.div`
   border-radius: 0.7rem;
 `
 export const Input = styled.input`
-  width: 20rem;
+  width: 27rem;
+  height: 3rem;
   background-color: #32385a;
   margin-left: 0.5rem;
   color: #2fe57e;
   border: none;
   outline: none;
   font-weight: bold;
+  font-size: 1.9rem;
   letter-spacing: 0.2rem;
   &::placeholder {
     color: #2fe57e;
   }
 `
 export const BtnAcess = styled.button`
-  width: 25rem;
-  margin-top: 3rem;
+  width: 32rem;
+  height: 5rem;
+  margin-top: 5rem;
   background-color: #2fe57e;
   border: none;
-  border-radius: 2rem;
+  border-radius: 5rem;
   transition: all 0.5s;
   font-weight: bold;
   letter-spacing: 0.2rem;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   text-decoration: none;
   color: #212121;
   justify-content: center;
   padding: 1rem;
-  display: flex;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
@@ -70,8 +73,8 @@ export const BtnAcess = styled.button`
   }
 `
 export const Logo = styled.img`
-  width: 12rem;
-  height: 9rem;
-  margin-bottom: 3rem;
+  width: 15rem;
+  height: 12rem;
+  margin-bottom: 5rem;
 `
 export const ColorIcon = '#5ef7a0'
