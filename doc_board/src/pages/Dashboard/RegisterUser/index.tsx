@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 import {
   ViewList,
   BtnRegister,
@@ -27,6 +27,7 @@ import {
   BtnAction,
   ColorIconAction,
 } from './style'
+import { mask } from '../../../components/masks/cpf'
 
 import { BsFillTrashFill, BsPencil } from 'react-icons/bs'
 
@@ -54,7 +55,7 @@ const createEmployeeSchema = yup.object().shape({
   cpf: yup
     .string()
     .required('CPF é obrigatório')
-    .max(12, 'O CPF deve contar 11 digitos'),
+    .max(14, 'O CPF deve conter 11 digitos'),
   senha: yup
     .string()
     .required('Senha é obrigatória')
@@ -84,6 +85,9 @@ export default function RegisterEmployee() {
     },
   ])
 
+  const handleInputChangeCPf = (event: ChangeEvent<HTMLInputElement>) => {
+    setCpf(mask(event.target.value))
+  }
   const [modal, setModal] = useState(false)
 
   const {
@@ -195,8 +199,9 @@ export default function RegisterEmployee() {
                 placeholder="CPF" // @ts-ignore
                 value={cpf}
                 name="cpf"
-                onChange={(e) => setCpf(e.target.value)}
+                onChange={handleInputChangeCPf}
               />
+
               {errors.cpf && <MsgError>{errors.cpf.message}</MsgError>}
 
               <Input
