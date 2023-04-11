@@ -1,4 +1,6 @@
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {
   ViewList,
   BtnRegister,
@@ -28,9 +30,7 @@ import {
   ColorIconAction,
 } from './style'
 import { mask } from '../../../components/masks/cpf'
-
 import { BsFillTrashFill, BsPencil } from 'react-icons/bs'
-
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -39,7 +39,7 @@ import NavMaster from '../../../components/NavMaster'
 import Modal from '../../../components/Modal/Modal'
 
 type CreateEmployeesData = {
-  id: Number
+  id: number
   nome: string
   cpf: string
   senha: string
@@ -64,30 +64,16 @@ const createEmployeeSchema = yup.object().shape({
 })
 
 export default function RegisterEmployee() {
-  const [nome, setNome] = useState('')
-  const [cpf, setCpf] = useState('')
-  const [acessLevel, setAcessLevel] = useState('')
+  const [nameEmployee, setNome] = useState('')
+  const [cpfEmployee, setCpf] = useState('')
+  const [acessLevelEmployee, setAcessLevel] = useState('')
   const [password, setPassword] = useState('')
-  const [elements, setElements] = useState<CreateEmployeesData[]>([
-    {
-      id: 1,
-      nome: 'Estevao Angeluz',
-      cpf: '000.000.000-45',
-      acessLevel: 'Vendedor',
-      senha: '123456',
-    },
-    {
-      id: 2,
-      nome: 'Matheus Silva',
-      cpf: '111.111.111-11',
-      acessLevel: 'Digitador',
-      senha: '654321',
-    },
-  ])
+  const [elements, setElements] = useState<CreateEmployeesData[]>([])
 
   const handleInputChangeCPf = (event: ChangeEvent<HTMLInputElement>) => {
     setCpf(mask(event.target.value))
   }
+
   const [modal, setModal] = useState(false)
 
   const {
@@ -103,26 +89,55 @@ export default function RegisterEmployee() {
     CreateEmployeesData
   > = async () => {
     const newItem = [...elements]
+
     newItem.push({
       id: elements.length + 1,
-      nome,
-      cpf,
-      acessLevel,
+      nome: nameEmployee,
+      cpf: cpfEmployee,
+      acessLevel: acessLevelEmployee,
       senha: password,
     })
+
     setElements(newItem)
     setNome('')
     setCpf('')
     setPassword('')
     setAcessLevel('')
 
-    alert('submit form')
+    toast.success(`Funcionário Adicionado com sucesso`, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+    })
     reset()
+    localStorage.setItem('cad_employee', JSON.stringify(newItem))
+    setElements(newItem)
   }
-  const removeItem = async () => {
-    alert('teste')
+
+  function removeItem(id: number) {
+    const message = confirm('Deseja realmente excluir esse funcionário?')
+
+    if (message === true) {
+      console.log(id)
+      const arr = elements.filter((item) => item.id !== id)
+      toast.success(`Funcionário Excluido com sucesso`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+      })
+      const deleteLocal = ({ arr }: any) => {
+        arr = localStorage.removeItem('cad_employee')
+        setElements(JSON.parse(arr))
+      }
+      setElements(arr)
+      deleteLocal(arr)
+    }
   }
-  console.log(errors)
+
+  useEffect(() => {
+    const data = localStorage.getItem('cad_employee')
+    if (data) {
+      setElements(JSON.parse(data))
+    }
+  }, [elements])
 
   return (
     <ContainerMain>
@@ -139,33 +154,43 @@ export default function RegisterEmployee() {
                   <NameUserHeader>
                     <TextHeader>NOME</TextHeader>
                   </NameUserHeader>
+
                   <CPFUserHeader>
                     <TextHeader>CPF</TextHeader>
                   </CPFUserHeader>
+
                   <AcessLeveluserHeader>
                     <TextHeader>NÍVEL DE ACESSO</TextHeader>
                   </AcessLeveluserHeader>
+
                   <PasswordUser>
                     <TextHeader>SENHA</TextHeader>
                   </PasswordUser>
+
                   <ActionPainel>
                     <TextHeader>AÇÃO</TextHeader>
                   </ActionPainel>
                 </HeaderList>
+
                 <ContentInfos>
                   {elements.map((item) => (
-                    <FieldData key={item.nome}>
+                    <FieldData key={item.id}>
                       <FieldName>{item.nome}</FieldName>
+
                       <FieldCPf>{item.cpf}</FieldCPf>
+
                       <FieldAcessLevel>
                         {item.acessLevel.toUpperCase()}
                       </FieldAcessLevel>
+
                       <FieldPassword>{item.senha}</FieldPassword>
+
                       <FieldActionPainel>
                         <BtnAction>
                           <BsPencil color={ColorIconAction} size={14} />
                         </BtnAction>
-                        <BtnAction onClick={removeItem}>
+
+                        <BtnAction onClick={() => removeItem(item.id)}>
                           <BsFillTrashFill color={ColorIconAction} size={14} />
                         </BtnAction>
                       </FieldActionPainel>
@@ -187,7 +212,7 @@ export default function RegisterEmployee() {
                 {...register('nome')}
                 type="text"
                 placeholder="NOME" // @ts-ignore
-                value={nome}
+                value={nameEmployee}
                 name="nome"
                 onChange={(e) => setNome(e.target.value)}
               />
@@ -197,7 +222,7 @@ export default function RegisterEmployee() {
                 {...register('cpf')}
                 type="text"
                 placeholder="CPF" // @ts-ignore
-                value={cpf}
+                value={cpfEmployee}
                 name="cpf"
                 onChange={handleInputChangeCPf}
               />
@@ -218,7 +243,7 @@ export default function RegisterEmployee() {
                 {...register('acessLevel')}
                 type="text"
                 placeholder="NÍVEL DE ACESSO" // @ts-ignore
-                value={acessLevel}
+                value={acessLevelEmployee}
                 onChange={(e) => setAcessLevel(e.target.value)}
               />
 
@@ -231,6 +256,8 @@ export default function RegisterEmployee() {
           submitAction={handleSubmit(handleCreateEmployees)}
         ></Modal>
       )}
+
+      <ToastContainer />
     </ContainerMain>
   )
 }
