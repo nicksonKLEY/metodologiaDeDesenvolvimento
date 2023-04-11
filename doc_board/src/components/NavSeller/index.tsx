@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidbar from '../Sidebar'
 import { ColorIcon, TitleLink, IconView, ViewLink } from './style'
-import { AiOutlineUser } from 'react-icons/ai'
+import { TbFileUpload } from 'react-icons/tb'
 
 export default function NavSeller() {
   return (
@@ -11,9 +11,9 @@ export default function NavSeller() {
           <ViewLink>
             <TitleLink>
               <IconView>
-                <AiOutlineUser color={ColorIcon} size={25} />
+                <TbFileUpload color={ColorIcon} size={25} />
               </IconView>
-              Vendedor
+              Propostas
             </TitleLink>
           </ViewLink>
         }
