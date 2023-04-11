@@ -1,5 +1,6 @@
 export const dataSituation = [
   {
+    id: 1,
     name: 'Raimundo Nonato',
     bank: 'Daycoval',
     status: 'Aguardando digitação',
@@ -7,6 +8,7 @@ export const dataSituation = [
   },
 
   {
+    id: 2,
     name: 'Maria do Perpetuo',
     bank: 'Pan',
     status: 'Documento pendente',
@@ -14,6 +16,7 @@ export const dataSituation = [
   },
 
   {
+    id: 3,
     name: 'Maria do Perpetuo',
     bank: 'Safra',
     status: 'Proposta Digitada',
@@ -21,6 +24,7 @@ export const dataSituation = [
   },
 
   {
+    id: 4,
     name: 'Terezinha Bentes',
     bank: 'BMC',
     status: 'Proposta Recusada',
