@@ -27,7 +27,7 @@ const newProposalSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),
   cpf: z.string().nonempty('CPF é obrigatório'),
   phone: z.string().nonempty('Telefone é obrigatório'),
-  price: z.number(),
+  price: z.string(),
   bank: z.string().nonempty('Banco é obrigatório'),
 })
 
@@ -67,10 +67,11 @@ export function ProposalModal() {
 
         <Title>Nova Proposta</Title>
 
-        <form>
+        <form onSubmit={handleSubmit(handleNewProposal)}>
           <input type="text" placeholder="Nome" {...register('name')} />
 
           {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+
           <input type="text" placeholder="CPF" {...register('cpf')} />
 
           <WrapperInput>
@@ -111,7 +112,7 @@ export function ProposalModal() {
             </PdfList>
           )}
 
-          <ButtonSubmitContainer onClick={handleSubmit(handleNewProposal)}>
+          <ButtonSubmitContainer>
             <ButtonSubmit>Gravar</ButtonSubmit>
           </ButtonSubmitContainer>
         </form>
