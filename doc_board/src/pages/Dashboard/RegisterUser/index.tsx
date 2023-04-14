@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react'
+import { useState, ChangeEvent } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {
@@ -123,21 +123,21 @@ export default function RegisterEmployee() {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000,
       })
-      const deleteLocal = ({ arr }: any) => {
-        arr = localStorage.removeItem('cad_employee')
-        setElements(JSON.parse(arr))
-      }
+      // const deleteLocal = ({ arr }: any) => {
+      //   arr = localStorage.removeItem('cad_employee')
+      //   setElements(JSON.parse(arr))
+      // }
       setElements(arr)
-      deleteLocal(arr)
+      // deleteLocal(arr)
     }
   }
 
-  useEffect(() => {
-    const data = localStorage.getItem('cad_employee')
-    if (data) {
-      setElements(JSON.parse(data))
-    }
-  }, [elements])
+  // useEffect(() => {
+  //   const data = localStorage.getItem('cad_employee')
+  //   if (data) {
+  //     setElements(JSON.parse(data))
+  //   }
+  // }, [elements])
 
   return (
     <ContainerMain>

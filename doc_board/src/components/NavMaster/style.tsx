@@ -32,7 +32,6 @@ export const ViewLink = styled.div`
 `
 export const TitleLink = styled(NavLink)`
   text-decoration: ${(props) => {
-    console.log(props.style)
     return props.style
       ? (isActive) => (isActive ? 'underline' : 'none')
       : 'none'
@@ -64,7 +63,6 @@ export const IconView = styled.span`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => {
-    console.log(props.style)
     return props.style ? (isActive) => (isActive ? '#121212' : '#fff') : 'none'
   }};
   @media (max-width: 768px) {
@@ -74,7 +72,6 @@ export const IconView = styled.span`
 export const IconPerformance = styled(TbChartInfographic)`
   font-size: 2.7rem;
   color: ${(props) => {
-    console.log(props.style)
     return props.style ? (isActive) => (isActive ? '#121212' : '#fff') : 'none'
   }};
   &:hover {
@@ -89,7 +86,6 @@ export const IconPerformance = styled(TbChartInfographic)`
 export const IconUser = styled(AiOutlineUser)`
   font-size: 2.7rem;
   color: ${(props) => {
-    console.log(props.style)
     return props.style ? (isActive) => (isActive ? '#121212' : '#fff') : 'none'
   }};
   &:hover {
