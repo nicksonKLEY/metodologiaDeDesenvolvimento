@@ -24,9 +24,10 @@ export const Container = styled.nav`
   }
 `
 export const TitlePage = styled.h1`
+  font-family: 'Poppins', sans-serif;
   color: #5ef7a0;
-  margin-right: 2.7rem;
-  font-size: 2.1rem;
+  margin-right: 1.7rem;
+  font-size: 2.5rem;
   @media (max-width: 768px) {
     display: none;
   }
