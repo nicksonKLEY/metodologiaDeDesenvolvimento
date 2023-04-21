@@ -1,6 +1,8 @@
 import { ReactNode, useState } from 'react'
-import { FaBars } from 'react-icons/fa'
-import { IoCloseSharp, IoExitOutline } from 'react-icons/io5'
+
+// import { FaBars } from 'react-icons/fa'
+import { IoExitOutline } from 'react-icons/io5'
+
 
 import LogoImg from '../../assets/imgs/simbolo.png'
 import {
@@ -14,13 +16,18 @@ import {
   Footer,
   Logo,
   BtnExit,
+  TxtLink,
+  FaBarsIcon,
+  CloseSidebar,
 } from './style'
 interface namePageProps {
   tPage: string
-  itemNavigate1: ReactNode
+
+  itemNavigate: ReactNode
+
 }
 
-export default function Sidbar({ tPage, itemNavigate1 }: namePageProps) {
+export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
   const [sidebar, setSidebar] = useState(false)
 
   const showSiderbar = () => setSidebar(!sidebar)
@@ -30,7 +37,7 @@ export default function Sidbar({ tPage, itemNavigate1 }: namePageProps) {
       {sidebar ? (
         <Container>
           <ViewTitle>
-            <FaBars
+            <FaBarsIcon
               onClick={showSiderbar}
               cursor={'pointer'}
               size={20}
@@ -43,20 +50,13 @@ export default function Sidbar({ tPage, itemNavigate1 }: namePageProps) {
           <ContainerInfo>
             <ViewTitle>
               <TitlePage>{tPage}</TitlePage>
-              <IoCloseSharp
-                onClick={showSiderbar}
-                cursor={'pointer'}
-                size={25}
-                color={ColorIconOpen}
-              />
+              <CloseSidebar onClick={showSiderbar} cursor={'pointer'} />
             </ViewTitle>
-
-            <ViewElements>{itemNavigate1}</ViewElements>
           </ContainerInfo>
-
+          <ViewElements>{itemNavigate}</ViewElements>
           <Footer>
             <BtnExit>
-              Sair
+              <TxtLink> Sair</TxtLink>
               <IoExitOutline size={35} color={ColorIconOpen} />
             </BtnExit>
             <Logo src={LogoImg} />

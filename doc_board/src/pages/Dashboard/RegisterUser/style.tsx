@@ -38,7 +38,7 @@ export const ContainerList = styled.div`
 export const ViewList = styled.div`
   width: 97%;
   height: 88%;
-  background-color: #e6e7e8;
+  background-color: #ffffff;
   box-shadow: 0rem 1rem 1rem #222544;
   margin-top: 2rem;
   align-items: center;
@@ -70,7 +70,7 @@ export const HeaderList = styled.header`
   justify-content: space-between;
   width: 100%;
   height: 3rem;
-  background-color: #dcdcdf;
+  background-color: #ffffff;
 `
 export const NameUserHeader = styled.div`
   display: flex;
@@ -119,36 +119,41 @@ export const ActionPainel = styled.div`
 export const FieldName = styled(NameUserHeader)`
   height: 3.5rem;
   font-size: 1.8rem;
-  background-color: #d8dbe6;
+  background-color: #ffffff;
+  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `
 export const FieldCPf = styled(CPFUserHeader)`
   font-size: 1.8rem;
-  background-color: #d8dbe6;
+  background-color: #ffffff;
+  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
 `
 export const FieldPassword = styled(PasswordUser)`
   font-size: 1.8rem;
-  background-color: #d8dbe6;
+  background-color: #ffffff;
+  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
 `
 export const FieldAcessLevel = styled(AcessLeveluserHeader)`
-  font-size: 1.8rem;
-  background-color: #d8dbe6;
+  font-size: 1.7rem;
+  background-color: #ffffff;
+  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `
 export const FieldActionPainel = styled(ActionPainel)`
   display: flex;
   flex-direction: row;
-  background-color: #d8dbe6;
+  background-color: #ffffff;
+  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -225,6 +230,7 @@ export const Input = styled.input`
     color: #060606;
   }
 `
+
 export const BtnCreateNewUser = styled.button`
   background-color: #40cd7e;
   border-width: 0.2rem;

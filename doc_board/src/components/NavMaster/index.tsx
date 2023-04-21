@@ -1,25 +1,25 @@
 import Sidbar from '../Sidebar'
-import { ColorIcon, TitleLink, IconView, ViewLink } from './style'
-import { AiOutlineUser } from 'react-icons/ai'
+import { ViewItems, IconPerformance, IconUser } from './style'
+import SelectItem from '../Sidebar/SelectItem/selectItemSidbar'
 import React from 'react'
 
 export default function NavMaster() {
-  // const red = 'color-green-100 text-black'
-  // const normaLink = 'color-blue-100 text-white'
-
   return (
     <React.Fragment>
       <Sidbar
-        itemNavigate1={
-          <ViewLink>
-            {' '}
-            <TitleLink to="/registerEmployee">
-              <IconView>
-                <AiOutlineUser color={ColorIcon} size={25} />
-              </IconView>
-              Usuário
-            </TitleLink>
-          </ViewLink>
+        itemNavigate={
+          <ViewItems>
+            <SelectItem
+              icon={<IconUser />}
+              txtLink={'Usuário'}
+              linkNav={'/registerEmployee'}
+            />
+            <SelectItem
+              txtLink={'Desempenho'}
+              icon={<IconPerformance />}
+              linkNav={'/EmployeePerfomance'}
+            />
+          </ViewItems>
         }
         tPage={'Master'}
       />

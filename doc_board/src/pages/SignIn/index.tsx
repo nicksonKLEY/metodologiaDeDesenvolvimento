@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {
   Container,
   ViewSingIn,
@@ -16,11 +18,40 @@ import { RiLockPasswordFill } from 'react-icons/ri'
 export default function SingIn() {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
+  // const users = [
+  //   { user: 'admin', password: '123456' },
+  //   { user: 'seller', password: '123456' },
+  //   { user: 'typist', password: '123456' },
+  // ]
 
   // const { signed } = useContext(AuthContext)
 
   function HandleLogin(e: { preventDefault: () => void }) {
     e.preventDefault()
+
+    // se o um dos campos estiver vázio
+    if (password === '' || user === '') {
+      toast.warning('Preencha todos os campos!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      })
+      return
+    }
+    // se o login(senha ou usuario) estiver incorreto
+    if (password !== '12345' || user !== 'angeluz') {
+      toast.error('Usuário ou Senha inválidos!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      })
+      return
+    }
+    // se o login estiver correto
+    if (password === '12345' || user === 'angeluz') {
+      toast.success(`Bem-vindo ${user}`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      })
+    }
   }
 
   return (
@@ -50,6 +81,7 @@ export default function SingIn() {
 
         <BtnAcess type="submit">Entrar</BtnAcess>
       </ViewSingIn>
+      <ToastContainer />
     </Container>
   )
 }
