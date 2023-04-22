@@ -230,6 +230,29 @@ export const Input = styled.input`
     color: #060606;
   }
 `
+export const Select = styled.select`
+  margin-top: 2rem;
+  width: 100%;
+  height: 4rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 0.1rem solid;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 2rem;
+  color: gray;
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+  &::placeholder {
+    color: #060606;
+  }
+`
 
 export const BtnCreateNewUser = styled.button`
   background-color: #40cd7e;

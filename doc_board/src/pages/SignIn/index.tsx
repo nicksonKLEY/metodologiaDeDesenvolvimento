@@ -14,15 +14,12 @@ import {
 import LogoImg from '../../assets/imgs/logo.png'
 import { AiOutlineUser } from 'react-icons/ai'
 import { RiLockPasswordFill } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
 export default function SingIn() {
+  const navigate = useNavigate()
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
-  // const users = [
-  //   { user: 'admin', password: '123456' },
-  //   { user: 'seller', password: '123456' },
-  //   { user: 'typist', password: '123456' },
-  // ]
 
   // const { signed } = useContext(AuthContext)
 
@@ -47,6 +44,8 @@ export default function SingIn() {
     }
     // se o login estiver correto
     if (password === '12345' || user === 'angeluz') {
+      navigate('/registerEmployee')
+
       toast.success(`Bem-vindo ${user}`, {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
