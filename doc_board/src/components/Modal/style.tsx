@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MdClear } from 'react-icons/md'
 
 export const ContainerModal = styled.div`
   width: 100%;
@@ -44,21 +45,22 @@ export const ViewBtnExit = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
 `
-export const BtnExit = styled.button`
+export const BtnExit = styled(MdClear)`
   width: 3rem;
   height: 3rem;
   border-radius: 4rem;
+  border: solid 0.4rem;
   background-color: #fff;
   justify-content: center;
-  font-weight: bold;
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
   cursor: pointer;
-  margin-left: 3rem;
-  border-width: 0.4rem;
-  border-style: solid;
-  border-color: #000;
+  float: right;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(700%, -220%);
+  margin-top: -20rem;
 `
 // FORM
 export const ContainerForm = styled.form`

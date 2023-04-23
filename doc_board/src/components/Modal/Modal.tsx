@@ -30,7 +30,7 @@ export default function Modal({
       <ViewModal>
         {' '}
         <ViewBtnExit>
-          <BtnExit onClick={closeModalCopm}>x</BtnExit>
+          <BtnExit onClick={closeModalCopm} size={26} />
         </ViewBtnExit>
         <HeaderTitle>
           <TitleModal>{TxtTitle}</TitleModal>
