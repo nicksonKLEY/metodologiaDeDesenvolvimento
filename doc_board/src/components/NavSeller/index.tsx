@@ -7,7 +7,7 @@ export default function NavSeller() {
   return (
     <React.Fragment>
       <Sidbar
-        itemNavigate1={
+        itemNavigate={
           <ViewLink>
             <TitleLink>
               <IconView>

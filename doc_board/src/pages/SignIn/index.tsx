@@ -22,10 +22,9 @@ export default function SingIn() {
   const [password, setPassword] = useState('')
 
   // const { signed } = useContext(AuthContext)
-
+  const users = ['angeluz', 'marlison', 'josias']
   function HandleLogin(e: { preventDefault: () => void }) {
     e.preventDefault()
-
     // se o um dos campos estiver vázio
     if (password === '' || user === '') {
       toast.warning('Preencha todos os campos!', {
@@ -35,16 +34,24 @@ export default function SingIn() {
       return
     }
     // se o login(senha ou usuario) estiver incorreto
-    if (password !== '12345' || user !== 'angeluz') {
+    if (password !== '12345' || !user) {
       toast.error('Usuário ou Senha inválidos!', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
       })
       return
     }
-    // se o login estiver correto
-    if (password === '12345' || user === 'angeluz') {
+    if (password === '12345' && user === users[0]) {
+      // se o login estiver correto
       navigate('/registerEmployee')
+
+      toast.success(`Bem-vindo ${user}`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      })
+    }
+    if (password === '12345' && user === users[1]) {
+      navigate('/typist')
 
       toast.success(`Bem-vindo ${user}`, {
         position: toast.POSITION.TOP_CENTER,

@@ -112,7 +112,7 @@ export const PasswordUser = styled.div`
 export const ActionPainel = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 12%;
   background-color: #c5c7d1;
 `

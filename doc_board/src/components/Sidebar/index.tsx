@@ -1,8 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-// import { FaBars } from 'react-icons/fa'
 import { IoExitOutline } from 'react-icons/io5'
-
 
 import LogoImg from '../../assets/imgs/simbolo.png'
 import {
@@ -22,9 +20,7 @@ import {
 } from './style'
 interface namePageProps {
   tPage: string
-
   itemNavigate: ReactNode
-
 }
 
 export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
