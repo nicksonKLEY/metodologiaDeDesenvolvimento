@@ -9,13 +9,6 @@ import {
   ContainerContent,
   Container,
   ListContain,
-  HeaderList,
-  NameUserHeader,
-  CPFUserHeader,
-  AcessLeveluserHeader,
-  PasswordUser,
-  ActionPainel,
-  TextHeader,
   ViewInput,
   Input,
   ContentInfos,
@@ -31,11 +24,11 @@ import {
 } from './style'
 // import { mask } from '../../../components/masks/cpf'
 import { BsFillTrashFill, BsPencil } from 'react-icons/bs'
-
+import HeaderRegister from '../../../components/Master/headerRegister'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 
-import NavMaster from '../../../components/NavMaster'
+import NavMaster from '../../../components/Master/NavMaster'
 import Modal from '../../../components/Modal/Modal'
 
 const schema = z.object({
@@ -117,28 +110,7 @@ export default function RegisterEmployee() {
             <BtnRegister onClick={() => setModal(true)}>Cadastrar</BtnRegister>
             <ViewList>
               <ListContain>
-                <HeaderList>
-                  <NameUserHeader>
-                    <TextHeader>NOME</TextHeader>
-                  </NameUserHeader>
-
-                  <CPFUserHeader>
-                    <TextHeader>CPF</TextHeader>
-                  </CPFUserHeader>
-
-                  <AcessLeveluserHeader>
-                    <TextHeader>NÍVEL DE ACESSO</TextHeader>
-                  </AcessLeveluserHeader>
-
-                  <PasswordUser>
-                    <TextHeader>SENHA</TextHeader>
-                  </PasswordUser>
-
-                  <ActionPainel>
-                    <TextHeader>AÇÃO</TextHeader>
-                  </ActionPainel>
-                </HeaderList>
-
+                <HeaderRegister />
                 <ContentInfos>
                   {elements.map((item) => (
                     <FieldData key={item.id}>

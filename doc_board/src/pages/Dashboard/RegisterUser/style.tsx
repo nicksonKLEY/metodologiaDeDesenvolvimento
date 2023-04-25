@@ -124,6 +124,9 @@ export const FieldName = styled(NameUserHeader)`
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `
 export const FieldCPf = styled(CPFUserHeader)`
   font-size: 1.8rem;
@@ -131,6 +134,9 @@ export const FieldCPf = styled(CPFUserHeader)`
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
+  }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
   }
 `
 export const FieldPassword = styled(PasswordUser)`
@@ -140,13 +146,19 @@ export const FieldPassword = styled(PasswordUser)`
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
+  }
 `
 export const FieldAcessLevel = styled(AcessLeveluserHeader)`
   font-size: 1.7rem;
   background-color: #ffffff;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+  @media (max-width: 568px) {
+    font-size: 0.8rem;
   }
 `
 export const FieldActionPainel = styled(ActionPainel)`
@@ -176,6 +188,11 @@ export const BtnAction = styled.button`
   @media (max-width: 768px) {
     height: 2rem;
     width: 2rem;
+  }
+  @media (max-width: 568px) {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 0.1rem solid;
   }
 `
 export const ColorIconAction = '#46cea7 '

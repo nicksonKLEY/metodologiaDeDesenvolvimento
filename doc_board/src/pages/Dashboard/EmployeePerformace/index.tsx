@@ -1,4 +1,4 @@
-import NavMaster from '../../../components/NavMaster'
+import NavMaster from '../../../components/Master/NavMaster'
 import { Chart } from 'react-google-charts'
 import {
   ContainerMain,

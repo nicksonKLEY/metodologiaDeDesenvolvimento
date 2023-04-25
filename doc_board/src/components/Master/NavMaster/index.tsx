@@ -1,6 +1,6 @@
-import Sidbar from '../Sidebar'
+import Sidbar from '../../Sidebar'
 import { ViewItems, IconPerformance, IconUser } from './style'
-import SelectItem from '../Sidebar/SelectItem/selectItemSidbar'
+import SelectItem from '../../Sidebar/SelectItem/selectItemSidbar'
 import React from 'react'
 
 export default function NavMaster() {
