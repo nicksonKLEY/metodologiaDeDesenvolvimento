@@ -6,12 +6,11 @@ import {
   FieldBank,
   FieldStatus,
 } from './styles'
-import Modal from '../../components/Modal/Modal'
 import TypistContainer from '../../components/Typist/ContainerTypist'
+import { InfoClientModal } from '../../components/InfoClientModal'
 
 export default function Typist() {
   const [modal, setModal] = useState(false)
-  const [content, setContent] = useState('')
   const data = [
     { id: '1', name: 'Danielly', bank: 'Daycoval', status: 'Novo' },
     { id: '2', name: 'Jilza', bank: 'Daycoval', status: 'Novo' },
@@ -20,39 +19,28 @@ export default function Typist() {
     { id: '5', name: 'Julia', bank: 'pan', status: 'Pendente' },
   ]
   function modalOPen(id: string) {
-    setContent(id)
     setModal(true)
+    console.log(id)
   }
   return (
     <ContainerMain>
       <TypistContainer>
-        {data.map((item) => {
-          return (
-            <AnalizedElement
-              key={item.id}
-              style={{
-                color: item.status === 'Pendente' ? '#F1C889' : '#fff',
-              }}
-              onClick={() => modalOPen(item.name)}
-            >
-              <FieldClient>{item.name} </FieldClient>{' '}
-              <FieldBank> {item.bank}</FieldBank>{' '}
-              <FieldStatus>{item.status}</FieldStatus>
-            </AnalizedElement>
-          )
-        })}
+        {data.map((item) => (
+          <AnalizedElement
+            key={item.id}
+            style={{
+              color: item.status === 'Pendente' ? '#F1C889' : '#fff',
+            }}
+            onClick={() => modalOPen(item.name)}
+          >
+            <FieldClient>{item.name} </FieldClient>{' '}
+            <FieldBank> {item.bank}</FieldBank>{' '}
+            <FieldStatus>{item.status}</FieldStatus>
+          </AnalizedElement>
+        ))}
       </TypistContainer>
-      {modal && (
-        <Modal
-          closeModalCopm={() => setModal(false)}
-          TextButton={'aprovar'}
-          conteudo={<p>{content}</p>}
-          TxtTitle={'Nova Digitação'}
-          submitAction={function (e: any): void {
-            throw new Error('Function not implemented.')
-          }}
-        />
-      )}
+
+      <InfoClientModal isopen={modal} />
     </ContainerMain>
   )
 }
