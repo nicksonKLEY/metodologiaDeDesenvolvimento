@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import {
   ContainerMain,
   AnalizedElement,
@@ -19,11 +20,13 @@ export default function Typist() {
     { id: '5', name: 'Julia', bank: 'pan', status: 'Pendente' },
   ]
   function modalOPen(id: string) {
-    setModal(true)
+    setModal(!modal)
     console.log(id)
   }
   return (
     <ContainerMain>
+      <InfoClientModal isOpen={modal} onClose={() => setModal(!modal)} />
+
       <TypistContainer>
         {data.map((item) => (
           <AnalizedElement
@@ -39,8 +42,6 @@ export default function Typist() {
           </AnalizedElement>
         ))}
       </TypistContainer>
-
-      <InfoClientModal isopen={modal} />
     </ContainerMain>
   )
 }

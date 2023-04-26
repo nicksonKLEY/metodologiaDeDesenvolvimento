@@ -66,6 +66,11 @@ export const Input = styled.input`
   background-color: #ffffff;
   font-size: 1.5rem;
   color: #474a6b;
+
+  &::placeholder {
+    color: #474a6b;
+    font-size: 1.5rem;
+  }
 `
 
 export const ContentFiles = styled.div`
@@ -91,9 +96,11 @@ export const Files = styled.span`
 export const ButtonDownload = styled.button`
   width: 1.4rem;
   height: 1.4rem;
-
-  border: 1px solid red;
   margin-left: 1rem;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.5rem;
 `
 
 export const WrapperButton = styled.div`
@@ -121,4 +128,19 @@ export const TextButton = styled.span`
   font-weight: 700;
   font-size: 1.5rem;
   color: #40cd7e;
+`
+
+export const CloseButton = styled(Dialog.Close)`
+  position: absolute;
+  background: #fff;
+  border: none;
+  top: -1.4rem;
+  right: -1.4rem;
+  line-height: 0;
+  cursor: pointer;
+
+  font-size: 2.5rem;
+  border: 4px solid #1f2442;
+
+  border-radius: 1.9rem;
 `

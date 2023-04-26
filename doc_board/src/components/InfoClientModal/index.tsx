@@ -2,6 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import {
   Button,
   ButtonDownload,
+  CloseButton,
   Content,
   ContentFiles,
   Files,
@@ -16,19 +17,25 @@ import {
   WrapperButton,
 } from './styles'
 
+import { MdClear } from 'react-icons/md'
+import { BsFillArrowDownCircleFill } from 'react-icons/bs'
+
 interface Props {
-  isopen: boolean
+  isOpen: boolean
+  onClose: () => void
 }
 
-export function InfoClientModal({ isopen }: Props) {
+export function InfoClientModal({ isOpen, onClose }: Props) {
   return (
-    <Dialog.Root open={isopen}>
+    <Dialog.Root open={isOpen} onOpenChange={onClose}>
       <Dialog.Portal>
         <Overlay />
 
         <Content>
+          <CloseButton onClick={() => onClose()}>
+            <MdClear />
+          </CloseButton>
           <Title>Nova Digitação</Title>
-
           <Form>
             <InputWrapper>
               <Wrapper>
@@ -52,19 +59,19 @@ export function InfoClientModal({ isopen }: Props) {
             <InputWrapper>
               <Wrapper>
                 <Label htmlFor="cpf">CPF</Label>
-                <Input id="cpf" />
+                <Input id="cpf" placeholder="xxx.xxx.xxx-xx" />
               </Wrapper>
 
               <Wrapper>
                 <Label htmlFor="telefone">Telefone</Label>
-                <Input id="telefone" />
+                <Input id="telefone" placeholder="(xx) xxxxx-xxxx" />
               </Wrapper>
             </InputWrapper>
 
             <InputWrapper>
               <Wrapper style={{ width: '50%' }}>
                 <Label htmlFor="valor">Valor</Label>
-                <Input id="valor" />
+                <Input id="valor" placeholder="R$ 15.000,00" />
               </Wrapper>
             </InputWrapper>
 
@@ -75,7 +82,9 @@ export function InfoClientModal({ isopen }: Props) {
                 <ContentFiles>
                   <Files>arquivo.pdf</Files>
 
-                  <ButtonDownload />
+                  <ButtonDownload>
+                    <BsFillArrowDownCircleFill />
+                  </ButtonDownload>
                 </ContentFiles>
               </Wrapper>
             </InputWrapper>

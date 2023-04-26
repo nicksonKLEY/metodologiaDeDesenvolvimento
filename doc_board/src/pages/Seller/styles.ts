@@ -9,15 +9,12 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   padding: 0 8rem;
-  /* background-color: red; */
   width: 100%;
 
   > h2 {
     font-size: 1rem;
     color: red;
   }
-
-  /* background-color: red; */
 `
 
 export const Content = styled.main`
@@ -45,7 +42,6 @@ export const Content = styled.main`
 export const ContainerStatus = styled.div`
   margin-top: 2rem;
   background: white;
-  max-width: 98.7rem;
-  min-width: 28rem;
   padding: 1rem;
+  width: 100%;
 `

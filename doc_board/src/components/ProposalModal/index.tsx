@@ -2,8 +2,6 @@ import { ChangeEvent, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as z from 'zod'
 
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -22,6 +20,7 @@ import {
   AttachmentLabel,
   ErrorMessage,
 } from './styles'
+import { MdClear } from 'react-icons/md'
 
 const newProposalSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),
@@ -62,7 +61,7 @@ export function ProposalModal() {
 
       <Content>
         <CloseButton>
-          <AiOutlineCloseCircle size={30} color="#141939" />
+          <MdClear />
         </CloseButton>
 
         <Title>Nova Proposta</Title>
@@ -113,7 +112,7 @@ export function ProposalModal() {
           )}
 
           <ButtonSubmitContainer>
-            <ButtonSubmit>Gravar</ButtonSubmit>
+            <ButtonSubmit>Cadastrar</ButtonSubmit>
           </ButtonSubmitContainer>
         </form>
       </Content>

@@ -16,7 +16,7 @@ export const Content = styled(Dialog.Content)`
   background-color: #e6e7e8;
 
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -27,8 +27,8 @@ export const Content = styled(Dialog.Content)`
 
       background-color: #ffffff;
 
-      border-radius: 0.3rem;
-      border-width: 0.1rem;
+      border-radius: 0.5rem;
+      border-width: 2px;
       border-color: #9b9dad;
       margin-bottom: 0.5rem;
       outline: none;
@@ -87,7 +87,7 @@ export const ButtonSubmitContainer = styled.div`
 `
 
 export const ButtonSubmit = styled.button`
-  padding: 0.6rem 6rem;
+  padding: 1rem 8rem;
 
   background-color: #40cd7e;
   color: #1f2843;
@@ -108,8 +108,11 @@ export const ButtonSubmit = styled.button`
 
 export const PdfList = styled.ul`
   list-style: none;
-  background-color: #ffffff;
+  background-color: white;
+  border: 2px solid #474a6b;
+  border-radius: 5px;
   padding: 0.5rem;
+  padding-bottom: 3rem;
   margin-top: 0.4rem;
 
   > li {
@@ -119,12 +122,13 @@ export const PdfList = styled.ul`
 
 export const CloseButton = styled(Dialog.Close)`
   position: absolute;
-  background: #fff;
-  border: none;
-  top: -0.5rem;
-  right: -0.5rem;
+  background: #ffffff;
+  border: 4px solid #1f2442;
+  top: -1rem;
+  right: -1rem;
   line-height: 0;
   cursor: pointer;
+  font-size: 2rem;
 
   border-radius: 1.9rem;
 `
