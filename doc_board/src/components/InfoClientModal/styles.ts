@@ -124,6 +124,13 @@ export const Button = styled.button`
 
   border-radius: 2.5rem;
   background: #1f2442;
+  cursor: pointer;
+
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `
 
 export const TextButton = styled.span`
@@ -145,4 +152,8 @@ export const CloseButton = styled(Dialog.Close)`
   border: 4px solid #1f2442;
 
   border-radius: 1.9rem;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `
