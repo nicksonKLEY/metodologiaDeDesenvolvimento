@@ -1,6 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import styled from 'styled-components'
 
+import InputMask from 'react-input-mask'
+
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
   width: 100vw;
@@ -56,7 +58,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const Input = styled.input`
+export const Input = styled(InputMask)`
   width: 100%;
   height: 4rem;
   padding-left: 0.6rem;

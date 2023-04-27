@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  /* grid-template-columns: 1fr 1fr; */
   height: 100vh;
   width: 100%;
 `
@@ -21,7 +20,7 @@ export const Content = styled.main`
   padding-top: 3rem;
 
   > button {
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     background: #1f2442;
     color: #38ac72;
     font-weight: normal;

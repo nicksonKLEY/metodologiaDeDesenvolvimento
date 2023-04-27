@@ -40,38 +40,46 @@ export function InfoClientModal({ isOpen, onClose }: Props) {
             <InputWrapper>
               <Wrapper>
                 <Label htmlFor="vendedor">Vendedor</Label>
-                <Input id="vendedor" />
+                <Input mask="" id="vendedor" />
               </Wrapper>
 
               <Wrapper>
                 <Label htmlFor="banco">Banco</Label>
-                <Input id="banco" />
+                <Input mask="" id="banco" />
               </Wrapper>
             </InputWrapper>
 
             <InputWrapper>
               <Wrapper>
                 <Label htmlFor="cliente">Cliente</Label>
-                <Input id="cliente" />
+                <Input mask="" id="cliente" />
               </Wrapper>
             </InputWrapper>
 
             <InputWrapper>
               <Wrapper>
                 <Label htmlFor="cpf">CPF</Label>
-                <Input id="cpf" placeholder="xxx.xxx.xxx-xx" />
+                <Input
+                  mask="999.999.999-99"
+                  id="cpf"
+                  placeholder="xxx.xxx.xxx-xx"
+                />
               </Wrapper>
 
               <Wrapper>
                 <Label htmlFor="telefone">Telefone</Label>
-                <Input id="telefone" placeholder="(xx) xxxxx-xxxx" />
+                <Input
+                  mask="(99) 99999-9999"
+                  id="telefone"
+                  placeholder="(xx) xxxxx-xxxx"
+                />
               </Wrapper>
             </InputWrapper>
 
             <InputWrapper>
               <Wrapper style={{ width: '50%' }}>
                 <Label htmlFor="valor">Valor</Label>
-                <Input id="valor" placeholder="R$ 15.000,00" />
+                <Input mask="" id="valor" placeholder="R$ 15.000,00" />
               </Wrapper>
             </InputWrapper>
 
