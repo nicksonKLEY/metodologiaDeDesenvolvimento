@@ -30,10 +30,11 @@ import { useForm } from 'react-hook-form'
 
 import NavMaster from '../../../components/Master/NavMaster'
 import Modal from '../../../components/Modal/Modal'
-
-import { addDoc, collection, deleteDoc, doc } from 'firebase/firestore'
-import { User, UserParser } from '../../../services/Models/User'
-import { db } from '../../../services/connection'
+import { Insert } from '../../../services/UseCases/Insert'
+import { UserParser } from '../../../services/Connection/Firebase/Parsers/UserParser'
+import { firebaseConnection } from '../../../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../../../services/Connection/ConnectionPages'
+import { Delete } from '../../../services/UseCases/Delete'
 
 const schema = z.object({
 id: z.string(),
@@ -61,15 +62,15 @@ reset,
 formState: { errors },
 } = useForm<FormProps>({ mode: 'all' })
 
+const insert = new Insert(new firebaseConnection(ConnectionPages.User), new UserParser())
+const remove = new Delete(new firebaseConnection(ConnectionPages.User))
+
 const handleForm = async (data: FormProps) => {
   // TODO: - adding a load component to user know is waiting 
   // TODO: - Jogar isso tudo na service
   try {
-    const docRef = await addDoc(
-      collection(db, "User"),
-      UserParser.toFirestore(new User(data.name, data.cpf, data.password, data.acessLevel)),
-    )
-    data.id = docRef.id
+    data.id = await insert.this(data)
+    // data.id = docRef.id
 
     elements.push(data)
 
@@ -98,7 +99,7 @@ const handleForm = async (data: FormProps) => {
   if (message === true) {
 
     try {
-      await deleteDoc(doc(db, "citUseries", id));
+      remove.this(id)
 
       const index = elements.findIndex((item) => item.id === id)
 
