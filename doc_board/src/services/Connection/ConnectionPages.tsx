@@ -1,7 +1,6 @@
 enum ConnectionPages {
-    User = "User",
-    Request = "Request",
-    Document = "Document"
+    User = 'User',
+    Request = 'Request',
+    Document = 'Document'
 }
-
-export default ConnectionPages;
+export default ConnectionPages
