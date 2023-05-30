@@ -1,6 +1,6 @@
 import { FormProps } from "react-router-dom"
 import { ModelParser } from "../Models/ModelParser"
-import { Connection } from "./Connection"
+import { Connection } from "../Connection/Connection"
 
 export class Insert {
     connection: Connection
@@ -12,7 +12,7 @@ export class Insert {
     }
 
     async this(form: FormProps): Promise<string>{
-        return this.connection.insert(
+        return await this.connection.insert(
             this.model.toConnection(form)
         )
     }

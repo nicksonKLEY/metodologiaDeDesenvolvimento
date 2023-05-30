@@ -1,4 +1,4 @@
-import ConnectionPages from "../Connection/ConnectionPages"
+import ConnectionPages from "./ConnectionPages"
 
 export interface Connection {
     insert(data: any): Promise<string>

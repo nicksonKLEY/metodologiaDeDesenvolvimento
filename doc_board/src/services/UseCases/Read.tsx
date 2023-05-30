@@ -1,5 +1,5 @@
 import { ModelParser } from '../Models/ModelParser'
-import { Connection } from './Connection'
+import { Connection } from '../Connection/Connection'
 
 export class Read {
   connection: Connection

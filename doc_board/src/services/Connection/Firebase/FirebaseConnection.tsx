@@ -6,7 +6,7 @@ import {
   getDoc,
   getDocs,
 } from 'firebase/firestore'
-import { Connection } from '../../UseCases/Connection'
+import { Connection } from '../Connection'
 import ConnectionPages from '../ConnectionPages'
 import { firebaseDB } from './firebaseConfiguration'
 
