@@ -38,7 +38,7 @@ export const ContainerList = styled.div`
 export const ViewList = styled.div`
   width: 97%;
   height: 88%;
-  background-color: #ffffff;
+  background-color: #d9d9d9;
   box-shadow: 0rem 1rem 1rem #222544;
   margin-top: 2rem;
   align-items: center;
@@ -77,7 +77,7 @@ export const NameUserHeader = styled.div`
   justify-content: center;
   align-items: center;
   width: 40%;
-  background-color: #c5c7d1;
+  background-color: #a1a3b3;
   margin-right: 0.5rem;
   color: #1f2442;
 `
@@ -86,7 +86,7 @@ export const CPFUserHeader = styled.div`
   align-items: center;
   justify-content: center;
   width: 24%;
-  background-color: #c5c7d1;
+  background-color: #a1a3b3;
   color: #1f2442;
   margin-right: 0.5rem;
 `
@@ -95,7 +95,7 @@ export const AcessLeveluserHeader = styled.div`
   align-items: center;
   justify-content: center;
   width: 15%;
-  background-color: #c5c7d1;
+  background-color: #a1a3b3;
   color: #1f2442;
   margin-right: 0.5rem;
 `
@@ -104,7 +104,7 @@ export const PasswordUser = styled.div`
   justify-content: center;
   display: flex;
   width: 10%;
-  background-color: #c5c7d1;
+  background-color: #a1a3b3;
   color: #1f2442;
   margin-right: 0.5rem;
 `
@@ -119,7 +119,7 @@ export const ActionPainel = styled.div`
 export const FieldName = styled(NameUserHeader)`
   height: 3.5rem;
   font-size: 1.8rem;
-  background-color: #ffffff;
+  background-color: #d8dbe6;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -130,7 +130,7 @@ export const FieldName = styled(NameUserHeader)`
 `
 export const FieldCPf = styled(CPFUserHeader)`
   font-size: 1.8rem;
-  background-color: #ffffff;
+  background-color: #d8dbe6;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -141,7 +141,7 @@ export const FieldCPf = styled(CPFUserHeader)`
 `
 export const FieldPassword = styled(PasswordUser)`
   font-size: 1.8rem;
-  background-color: #ffffff;
+  background-color: #d8dbe6;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -152,7 +152,7 @@ export const FieldPassword = styled(PasswordUser)`
 `
 export const FieldAcessLevel = styled(AcessLeveluserHeader)`
   font-size: 1.7rem;
-  background-color: #ffffff;
+  background-color: #d8dbe6;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -164,7 +164,7 @@ export const FieldAcessLevel = styled(AcessLeveluserHeader)`
 export const FieldActionPainel = styled(ActionPainel)`
   display: flex;
   flex-direction: row;
-  background-color: #ffffff;
+  background-color: #d8dbe6;
   box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
