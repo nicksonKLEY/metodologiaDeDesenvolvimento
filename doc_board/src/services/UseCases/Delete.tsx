@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { FormProps } from 'react-router-dom'
-import { ModelParser } from '../Models/ModelParser'
-import { Connection } from './Connection'
+import { Connection } from '../Connection/Connection'
 
 export class Delete {
   connection: Connection

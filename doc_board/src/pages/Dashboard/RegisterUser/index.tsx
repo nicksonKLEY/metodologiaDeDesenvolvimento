@@ -29,6 +29,17 @@ import { useForm } from 'react-hook-form'
 import NavMaster from '../../../components/Master/NavMaster'
 import Modal from '../../../components/Modal/Modal'
 
+// Connection
+import { FirebaseConnection } from '../../../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../../../services/Connection/ConnectionPages'
+// Model
+import { UserParser } from '../../../services/Connection/Firebase/Parsers/UserParser'
+// Use cases
+import { Insert } from '../../../services/UseCases/Insert'
+import { Delete } from '../../../services/UseCases/Delete'
+import { Read } from '../../../services/UseCases/Read'
+import { Update } from '../../../services/UseCases/Update'
+
 const schema = z.object({
   id: z.string(),
   name: z.string().min(3, 'O nome é obrigatório'),
@@ -56,10 +67,21 @@ export default function RegisterEmployee() {
     mode: 'all',
   })
 
-  const handleForm = (data: FormProps) => {
+  const connection = new FirebaseConnection(ConnectionPages.User)
+  const userParser = new UserParser()
+
+  const insert = new Insert(connection, userParser)
+  const remove = new Delete(connection)
+  const select = new Read(connection, userParser)
+  const update = new Update(connection, userParser)
+
+  const handleForm = async (data: FormProps) => {
     try {
       if (selectedEmployee) {
         // Atualizar funcionário existente
+        console.log(data)
+        await update.this(selectedEmployee.id, data)
+        
         const updatedElements = elements.map((item) => {
           if (item.id === selectedEmployee.id) {
             return {
@@ -80,7 +102,7 @@ export default function RegisterEmployee() {
         })
       } else {
         // Adicionar novo funcionário
-        const id = Math.random().toString()
+        const id = await insert.this(data)
         const newEmployee = {
           id,
           name: data.name,
@@ -114,6 +136,8 @@ export default function RegisterEmployee() {
     const message = window.confirm('Deseja realmente excluir esse funcionário?')
     if (message === true) {
       try {
+        // remove use case
+        remove.this(id)
         const updatedElements = elements.filter((item) => item.id !== id)
         setElements(updatedElements)
         localStorage.setItem('cad_employee', JSON.stringify(updatedElements))
@@ -140,11 +164,14 @@ export default function RegisterEmployee() {
   }
 
   useEffect(() => {
-    const storedData = localStorage.getItem('cad_employee')
-    if (storedData) {
-      const parsedData: FormProps[] = JSON.parse(storedData)
-      setElements(parsedData)
+    const fetchData = async () => {
+      const result = await select.all()
+      console.log(result)
+      setElements(result)
+      reset()
+      localStorage.setItem('cad_employee', JSON.stringify(elements))
     }
+    fetchData()
   }, [])
 
   return (

@@ -1,18 +1,18 @@
 export class UserModel {
-  identifier: String
+  id: String
   name: String
   cpf: String
   password: String
   acessLevel: String
 
   constructor(
-    identifier: String,
+    id: String,
     name: String,
     cpf: String,
     password: String,
     acessLevel: String,
   ) {
-    this.identifier = identifier
+    this.id = id
     this.name = name
     this.cpf = cpf
     this.password = password

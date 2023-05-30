@@ -5,8 +5,9 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc,
 } from 'firebase/firestore'
-import { Connection } from '../../UseCases/Connection'
+import { Connection } from '../Connection'
 import ConnectionPages from '../ConnectionPages'
 import { firebaseDB } from './firebaseConfiguration'
 
@@ -17,8 +18,10 @@ export class FirebaseConnection implements Connection {
     this.page = page
   }
 
-  update(identifier: string, data: any): Promise<string> {
-    throw new Error('Method not implemented.')
+  async update(identifier: string, data: any) {
+    console.log(identifier)
+    console.log(data)
+    await setDoc(doc(firebaseDB, this.page.valueOf(), identifier), data)
   }
 
   async selectAll(): Promise<any> {
