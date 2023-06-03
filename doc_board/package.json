@@ -20,6 +20,7 @@
     "react-google-charts": "^4.0.0",
     "react-hook-form": "^7.44.2",
     "react-icons": "^4.8.0",
+    "react-input-mask": "^2.0.4",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
@@ -59,6 +60,7 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/react-animations": "^1.0.0",
+    "@types/react-input-mask": "^3.0.2",
     "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.36.0"

@@ -81,7 +81,7 @@ export default function RegisterEmployee() {
         // Atualizar funcionário existente
         console.log(data)
         await update.this(selectedEmployee.id, data)
-        
+
         const updatedElements = elements.map((item) => {
           if (item.id === selectedEmployee.id) {
             return {

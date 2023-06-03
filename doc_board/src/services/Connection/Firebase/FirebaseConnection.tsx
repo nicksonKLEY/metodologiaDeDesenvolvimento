@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import {
   addDoc,
   collection,
@@ -19,7 +20,8 @@ export class FirebaseConnection implements Connection {
     this.page = page
   }
 
-  async update(identifier: string, data: any) {getTsBuildInfoEmitOutputFilePath
+  async update(identifier: string, data: any) {
+    getTsBuildInfoEmitOutputFilePath
     await setDoc(doc(firebaseDB, this.page.valueOf(), identifier), data)
   }
 

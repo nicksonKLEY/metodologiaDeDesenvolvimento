@@ -5,7 +5,7 @@ import { Connection } from '../Connection/Connection'
 export class Insert {
   connection: Connection
   model: ModelParser
-  
+
   constructor(connection: Connection, model: ModelParser) {
     this.connection = connection
     this.model = model
