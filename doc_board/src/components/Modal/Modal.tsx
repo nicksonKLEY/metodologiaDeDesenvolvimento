@@ -35,10 +35,12 @@ export default function Modal({
         <HeaderTitle>
           <TitleModal>{TxtTitle}</TitleModal>
         </HeaderTitle>
-        <ContainerForm onSubmit={submitAction}>
+        <ContainerForm>
           {conteudo}
 
-          <BtnCreateNewUser>{TextButton}</BtnCreateNewUser>
+          <BtnCreateNewUser type="submit" onClick={submitAction}>
+            {TextButton}
+          </BtnCreateNewUser>
         </ContainerForm>
       </ViewModal>
     </ContainerModal>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {
@@ -39,13 +39,14 @@ import { Insert } from '../../../services/UseCases/Insert'
 import { Delete } from '../../../services/UseCases/Delete'
 import { Read } from '../../../services/UseCases/Read'
 import { Update } from '../../../services/UseCases/Update'
+// import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
   id: z.string(),
   name: z.string().min(3, 'O nome é obrigatório'),
   cpf: z.string().min(14, 'O CPF deve ter 11 dígitos'),
   password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
-  acessLevel: z.string(),
+  acessLevel: z.enum(['Vendedor', 'Digitador']),
 })
 
 type FormProps = z.infer<typeof schema>
@@ -63,9 +64,7 @@ export default function RegisterEmployee() {
     formState: { errors },
     reset,
     setValue,
-  } = useForm<FormProps>({
-    mode: 'all',
-  })
+  } = useForm<FormProps>({})
 
   const connection = new FirebaseConnection(ConnectionPages.User)
   const userParser = new UserParser()
@@ -227,9 +226,9 @@ export default function RegisterEmployee() {
                 placeholder="SENHA"
               />
               {errors.password?.message && <p>{errors.password.message}</p>}
-              <Select {...register('acessLevel')} defaultValue="">
-                <option>Digitador</option>
-                <option>Vendedor</option>
+              <Select {...register('acessLevel')} defaultValue="Digitador">
+                <option value="Digitador">Digitador</option>
+                <option value="Vendedor">Vendedor</option>
               </Select>
               {errors.acessLevel?.message && <p>{errors.acessLevel.message}</p>}
             </ViewInput>
