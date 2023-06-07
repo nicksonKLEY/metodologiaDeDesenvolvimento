@@ -1,6 +1,6 @@
-import { FormEvent, useState } from 'react'
-import { ToastContainer } from 'react-toastify'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { FormEvent, useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+
 import 'react-toastify/dist/ReactToastify.css'
 import {
   Container,
@@ -11,36 +11,49 @@ import {
   ColorIcon,
   BtnAcess,
 } from './style'
-
 import LogoImg from '../../assets/imgs/logo.png'
 import { AiOutlineUser } from 'react-icons/ai'
 import { RiLockPasswordFill } from 'react-icons/ri'
+import { Read } from '../../services/UseCases/Read'
+import { UserParser } from '../../services/Connection/Firebase/Parsers/UserParser'
+import { FirebaseConnection } from '../../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../../services/Connection/ConnectionPages'
+import { useNavigate } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 
 export default function SingIn() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const userParser = new UserParser()
+  const connection = new FirebaseConnection(ConnectionPages.User)
+
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
 
-  const auth = getAuth()
-
-  // const { signed } = useContext(AuthContext)
+  const select = new Read(connection, userParser)
+  useEffect(() => {
+    async function load() {
+      const result = await select.all()
+      console.log(result)
+    }
+    load()
+  }, [])
 
   async function HandleLogin(e: FormEvent) {
     e.preventDefault()
+    try {
+      const result = await select.all()
+      console.log(result)
+      if (password === result.password && user === result.name) {
+        navigate('/registerEmployee')
 
-    signInWithEmailAndPassword(auth, user, password)
-      .then((userCredential) => {
-        // Signed in
-        const users = userCredential.user
-        console.log(users)
-        // ...
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-
-    console.log('jfskdjfasj')
+        toast.success(`Bem-vindo ${user}`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
 
     // // se o um dos campos estiver vázio
     // if (password === '' || user === '') {
