@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.body`
+export const Container = styled.div`
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -13,7 +13,7 @@ export const Container = styled.body`
     padding-left: 2rem;
   }
 `
-export const ContainerMain = styled.body`
+export const ContainerMain = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;

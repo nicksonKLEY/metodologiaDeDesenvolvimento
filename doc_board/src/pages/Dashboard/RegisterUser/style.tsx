@@ -14,7 +14,7 @@ export const Container = styled.div`
     padding-left: 2rem;
   }
 `
-export const ContainerMain = styled.body`
+export const ContainerMain = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;

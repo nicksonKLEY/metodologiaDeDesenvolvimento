@@ -22,7 +22,10 @@ import { useNavigate } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 
 export default function SingIn() {
+  const [credentialsUser, setCredentialsUser] = useState<any>([])
+
   const navigate = useNavigate()
+
   const userParser = new UserParser()
   const connection = new FirebaseConnection(ConnectionPages.User)
 
@@ -30,21 +33,43 @@ export default function SingIn() {
   const [password, setPassword] = useState('')
 
   const select = new Read(connection, userParser)
-  useEffect(() => {
-    async function load() {
-      const result = await select.all()
-      console.log(result)
-    }
-    load()
-  }, [])
 
   async function HandleLogin(e: FormEvent) {
     e.preventDefault()
     try {
-      const result = await select.all()
-      console.log(result)
-      if (password === result.password && user === result.name) {
-        navigate('/registerEmployee')
+      const filteredName = credentialsUser.find(
+        (item: any) => item.name === user,
+      )
+
+      const filteredPassword = credentialsUser.find(
+        (item: any) => item.password === password,
+      )
+
+      const filteredAccessLevel = credentialsUser.find(
+        (item: any) => item.acessLevel === 'Vendedor',
+      )
+
+      const filteredAccessLevelTypist = credentialsUser.find(
+        (item: any) => item.acessLevel === 'Digitador',
+      )
+
+      if (
+        password === filteredPassword.password &&
+        user === filteredName.name &&
+        filteredAccessLevel.acessLevel === 'Vendedor'
+      ) {
+        navigate('/seller')
+
+        toast.success(`Bem-vindo ${user}`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
+        })
+      } else if (
+        password === filteredPassword.password &&
+        user === filteredName.name &&
+        filteredAccessLevelTypist.acessLevel === 'Digitador'
+      ) {
+        navigate('/typist')
 
         toast.success(`Bem-vindo ${user}`, {
           position: toast.POSITION.TOP_CENTER,
@@ -54,33 +79,15 @@ export default function SingIn() {
     } catch (error) {
       console.error(error)
     }
-
-    // // se o um dos campos estiver vázio
-    // if (password === '' || user === '') {
-    //   toast.warning('Preencha todos os campos!', {
-    //     position: toast.POSITION.TOP_CENTER,
-    //     autoClose: 3000,
-    //   })
-    //   return
-    // }
-    // // se o login(senha ou usuario) estiver incorreto
-    // if (password !== '12345' || user !== 'angeluz') {
-    //   toast.error('Usuário ou Senha inválidos!', {
-    //     position: toast.POSITION.TOP_CENTER,
-    //     autoClose: 3000,
-    //   })
-    //   return
-    // }
-    // // se o login estiver correto
-    // if (password === '12345' || user === 'angeluz') {
-    //   navigate('/registerEmployee')
-
-    //   toast.success(`Bem-vindo ${user}`, {
-    //     position: toast.POSITION.TOP_CENTER,
-    //     autoClose: 3000,
-    //   })
-    // }
   }
+
+  useEffect(() => {
+    async function load() {
+      const result = await select.all()
+      setCredentialsUser(result)
+    }
+    load()
+  }, [])
 
   return (
     <Container>
