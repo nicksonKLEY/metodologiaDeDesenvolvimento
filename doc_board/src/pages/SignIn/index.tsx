@@ -45,33 +45,26 @@ export default function SingIn() {
         (item: any) => item.password === password,
       )
 
-      const filteredAccessLevel = credentialsUser.find(
-        (item: any) => item.acessLevel === 'Vendedor',
-      )
+      if (filteredName && filteredPassword) {
+        if (filteredName.acessLevel === 'Vendedor') {
+          localStorage.setItem('loggedInUser', JSON.stringify(filteredName))
+          navigate('/seller')
 
-      const filteredAccessLevelTypist = credentialsUser.find(
-        (item: any) => item.acessLevel === 'Digitador',
-      )
+          toast.success(`Bem-vindo ${user}`, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000,
+          })
+        } else if (filteredName.acessLevel === 'Digitador') {
+          localStorage.setItem('loggedInUser', JSON.stringify(filteredName))
+          navigate('/typist')
 
-      if (
-        password === filteredPassword.password &&
-        user === filteredName.name &&
-        filteredAccessLevel.acessLevel === 'Vendedor'
-      ) {
-        navigate('/seller')
-
-        toast.success(`Bem-vindo ${user}`, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
-        })
-      } else if (
-        password === filteredPassword.password &&
-        user === filteredName.name &&
-        filteredAccessLevelTypist.acessLevel === 'Digitador'
-      ) {
-        navigate('/typist')
-
-        toast.success(`Bem-vindo ${user}`, {
+          toast.success(`Bem-vindo ${user}`, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000,
+          })
+        }
+      } else {
+        toast.warn(`Usúario não encontrado.`, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 3000,
         })
@@ -87,6 +80,18 @@ export default function SingIn() {
       setCredentialsUser(result)
     }
     load()
+  }, [])
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser)
+      if (user.acessLevel === 'Vendedor') {
+        navigate('/seller')
+      } else if (user.acessLevel === 'Digitador') {
+        navigate('/typist')
+      }
+    }
   }, [])
 
   return (
