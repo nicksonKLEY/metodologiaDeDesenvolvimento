@@ -1,62 +1,32 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Error404 from '../components/Erro404'
-import RouteWrapper from './index'
-import EmployeePerformance from '../pages/Dashboard/EmployeePerformace'
-import RegisterEmployee from '../pages/Dashboard/RegisterUser/index'
-
-import Seller from '../pages/Seller'
-import SingIn from '../pages/SignIn'
-import Typist from '../pages/Typist'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import SignIn from '../pages/SignIn'
+// import { SellerRoutes } from './sellerRoutes'
+import { TypistRoutes } from './typistRoutes'
+import { MasterRouter } from './masterRouter'
+import { SellerRoutes } from './sellerRoutes'
+import { useAuthContext } from '../hooks/authContext'
+import RouteWrapper from '.'
 
 export default function RoutesAppPrivate() {
+  const { userLogged, isLoading } = useAuthContext()
+
+  if (isLoading) {
+    return <div style={{ backgroundColor: '#000' }}>Carregando...</div>
+  }
+
+  if (userLogged.length === 0) {
+    return <SignIn />
+  }
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SingIn />} />
-        <Route
-          path="*"
-          element={
-            <RouteWrapper>
-              <Error404 />
-            </RouteWrapper>
-          }
-        />
-
-        <Route
-          path="/registerEmployee"
-          element={
-            <RouteWrapper>
-              <RegisterEmployee />
-            </RouteWrapper>
-          }
-        />
-        <Route
-          path="/EmployeePerfomance"
-          element={
-            <RouteWrapper>
-              <EmployeePerformance />
-            </RouteWrapper>
-          }
-        />
-
-        <Route
-          path="/seller"
-          element={
-            <RouteWrapper>
-              <Seller />
-            </RouteWrapper>
-          }
-        />
-
-        <Route
-          path="/typist"
-          element={
-            <RouteWrapper>
-              <Typist />
-            </RouteWrapper>
-          }
-        />
-      </Routes>
+      {userLogged.acessLevel === 'Vendedor' ? (
+        <SellerRoutes />
+      ) : userLogged.acessLevel === 'Digitador' ? (
+        <TypistRoutes />
+      ) : (
+        <MasterRouter />
+      )}
     </BrowserRouter>
   )
 }

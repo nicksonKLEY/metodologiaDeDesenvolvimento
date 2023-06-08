@@ -1,89 +1,27 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { FormEvent, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
 import * as S from './styles'
 import LogoImg from '../../assets/imgs/logo.png'
 import { MdEmail } from 'react-icons/md'
 import { RiLockPasswordFill, RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
-import { Read } from '../../services/UseCases/Read'
-import { UserParser } from '../../services/Connection/Firebase/Parsers/UserParser'
-import { FirebaseConnection } from '../../services/Connection/Firebase/FirebaseConnection'
-import ConnectionPages from '../../services/Connection/ConnectionPages'
-import { useNavigate } from 'react-router-dom'
+
+import { useAuthContext } from '../../hooks/authContext'
 
 export default function SingIn() {
-  const [credentialsUser, setCredentialsUser] = useState<any>([])
   const [eye, setEye] = useState('password')
-  const navigate = useNavigate()
-
-  const userParser = new UserParser()
-  const connection = new FirebaseConnection(ConnectionPages.User)
 
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
 
-  const select = new Read(connection, userParser)
+  const { singIn } = useAuthContext()
 
   async function HandleLogin(e: FormEvent) {
     e.preventDefault()
-    try {
-      const filteredName = credentialsUser.find(
-        (item: any) => item.name === user,
-      )
 
-      const filteredPassword = credentialsUser.find(
-        (item: any) => item.password === password,
-      )
-
-      if (filteredName && filteredPassword) {
-        if (filteredName.acessLevel === 'Vendedor') {
-          localStorage.setItem('loggedInUser', JSON.stringify(filteredName))
-          navigate('/seller')
-
-          toast.success(`Bem-vindo ${user}`, {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 3000,
-          })
-        } else if (filteredName.acessLevel === 'Digitador') {
-          localStorage.setItem('loggedInUser', JSON.stringify(filteredName))
-          navigate('/typist')
-
-          toast.success(`Bem-vindo ${user}`, {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 3000,
-          })
-        }
-      } else {
-        toast.warn(`Usúario não encontrado.`, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
-        })
-      }
-    } catch (error) {
-      console.error(error)
-    }
+    singIn(user, password)
   }
-
-  useEffect(() => {
-    async function load() {
-      const result = await select.all()
-      setCredentialsUser(result)
-    }
-    load()
-  }, [])
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('loggedInUser')
-    if (loggedInUser) {
-      const user = JSON.parse(loggedInUser)
-      if (user.acessLevel === 'Vendedor') {
-        navigate('/seller')
-      } else if (user.acessLevel === 'Digitador') {
-        navigate('/typist')
-      }
-    }
-  }, [])
 
   return (
     <S.Container>

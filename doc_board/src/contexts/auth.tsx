@@ -1,10 +1,14 @@
-import React, { ReactNode, useState, createContext, useEffect } from 'react'
-// import { auth } from '../services/connection'
+import { ReactNode, createContext, useEffect, useState } from 'react'
+
+import { Read } from '../services/UseCases/Read'
+import { UserParser } from '../services/Connection/Firebase/Parsers/UserParser'
+import { FirebaseConnection } from '../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../services/Connection/ConnectionPages'
+
 interface AuthContextProps {
-  signed: boolean
-  signIn: any
-  user: any
-  loading: boolean
+  singIn: (user: string, password: string) => any
+  userLogged: any
+  isLoading: boolean
 }
 interface AuthProviderProps {
   children: ReactNode
@@ -13,29 +17,56 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextProps)
 
 export default function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState(null)
-  // const [loadingAuth, setLoadingAhth] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [credentialsUser, setCredentialsUser] = useState<any>([])
+  const [userLogged, setUserLogged] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    function loadStorage() {
-      const storageUser = localStorage.getItem('@users')
-      if (storageUser) {
-        setUser(JSON.parse(storageUser))
-        setLoading(false)
-      }
-      setLoading(false)
+  const userParser = new UserParser()
+  const connection = new FirebaseConnection(ConnectionPages.User)
+  const select = new Read(connection, userParser)
+
+  function singIn(user: string, password: string) {
+    try {
+      const filteredUser = credentialsUser.find(
+        (item: any) => item.name === user && item.password === password,
+      )
+
+      localStorage.setItem('loggedInUser', JSON.stringify(filteredUser))
+      setUserLogged(filteredUser)
+    } catch (error) {
+      console.error(error)
     }
-    loadStorage()
-  }, [])
-
-  async function signIn(email: string, password: string) {
-    //  setLoadingAhth(true)
   }
 
+  useEffect(() => {
+    async function load() {
+      const result = await select.all()
+      setCredentialsUser(result)
+    }
+    load()
+  }, [])
+
+  async function fetchDataUser() {
+    try {
+      setIsLoading(true)
+      const loggedInUser = localStorage.getItem('loggedInUser')
+      if (loggedInUser) {
+        const user = JSON.parse(loggedInUser)
+        setUserLogged(user)
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchDataUser()
+  }, [])
+
   return (
-    // ´!!'convert para booleano //segundo user passa as informaces
-    <AuthContext.Provider value={{ signed: !!user, user, loading, signIn }}>
+    <AuthContext.Provider value={{ singIn, userLogged, isLoading }}>
       {children}
     </AuthContext.Provider>
   )
