@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ViewLink, TitleLink, TxtLink, IconView } from './style'
+import { ViewLink, TitleLink, TxtLink, IconView } from './styles'
 
 interface SelectItems {
   txtLink: string

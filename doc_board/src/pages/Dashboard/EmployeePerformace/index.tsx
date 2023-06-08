@@ -7,7 +7,7 @@ import {
   ContainerPerformance,
   ViewPerformance,
   TitlePage,
-} from './style'
+} from './styles'
 export const data = [
   ['Element', 'Vendas R$', { role: 'style' }],
   ['Dacnny', 85.94455, '#FF8AD0'], // RGB value

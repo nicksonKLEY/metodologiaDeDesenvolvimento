@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidbar from '../Sidebar'
-import { ColorIcon, TitleLink, IconView, ViewLink } from './style'
-import { TbFileUpload } from 'react-icons/tb'
+import SelectItem from '../Sidebar/SelectItem/selectItemSidbar'
+import { ViewLink, IconSeller } from './style'
 
 export default function NavSeller() {
   return (
@@ -9,12 +9,11 @@ export default function NavSeller() {
       <Sidbar
         itemNavigate={
           <ViewLink>
-            <TitleLink>
-              <IconView>
-                <TbFileUpload color={ColorIcon} size={25} />
-              </IconView>
-              Propostas
-            </TitleLink>
+            <SelectItem
+              txtLink={'Propostas'}
+              icon={<IconSeller />}
+              linkNav={'/seller'}
+            />
           </ViewLink>
         }
         tPage="Vendedor"

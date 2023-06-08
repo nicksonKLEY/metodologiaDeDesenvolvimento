@@ -1,4 +1,4 @@
-import { Container, Title, Msg, GoBack, ColorIcon } from './style'
+import { Container, Title, Msg, GoBack, ColorIcon } from './styles'
 import { BiError } from 'react-icons/bi'
 export default function Error404() {
   return (

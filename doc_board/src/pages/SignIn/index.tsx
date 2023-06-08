@@ -10,7 +10,7 @@ import {
   ViewInput,
   ColorIcon,
   BtnAcess,
-} from './style'
+} from './styles'
 import LogoImg from '../../assets/imgs/logo.png'
 import { AiOutlineUser } from 'react-icons/ai'
 import { RiLockPasswordFill } from 'react-icons/ri'

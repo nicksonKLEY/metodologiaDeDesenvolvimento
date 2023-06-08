@@ -1,14 +1,5 @@
 import { ReactNode } from 'react'
-import {
-  ViewModal,
-  ViewBtnExit,
-  BtnExit,
-  ContainerForm,
-  BtnCreateNewUser,
-  HeaderTitle,
-  TitleModal,
-  ContainerModal,
-} from './style'
+import * as S from './style'
 
 interface IsOPen {
   closeModalCopm: () => void
@@ -26,23 +17,23 @@ export default function Modal({
   submitAction,
 }: IsOPen) {
   return (
-    <ContainerModal>
-      <ViewModal>
+    <S.ContainerModal>
+      <S.ViewModal>
         {' '}
-        <ViewBtnExit>
-          <BtnExit onClick={closeModalCopm} size={26} />
-        </ViewBtnExit>
-        <HeaderTitle>
-          <TitleModal>{TxtTitle}</TitleModal>
-        </HeaderTitle>
-        <ContainerForm>
+        <S.ViewBtnExit>
+          <S.BtnExit onClick={closeModalCopm} size={26} />
+        </S.ViewBtnExit>
+        <S.HeaderTitle>
+          <S.TitleModal>{TxtTitle}</S.TitleModal>
+        </S.HeaderTitle>
+        <S.ContainerForm>
           {conteudo}
 
-          <BtnCreateNewUser type="submit" onClick={submitAction}>
+          <S.BtnCreateNewUser type="submit" onClick={submitAction}>
             {TextButton}
-          </BtnCreateNewUser>
-        </ContainerForm>
-      </ViewModal>
-    </ContainerModal>
+          </S.BtnCreateNewUser>
+        </S.ContainerForm>
+      </S.ViewModal>
+    </S.ContainerModal>
   )
 }

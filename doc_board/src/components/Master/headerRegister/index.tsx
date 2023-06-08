@@ -6,7 +6,7 @@ import {
   AcessLeveluserHeader,
   ActionPainel,
   PasswordUser,
-} from './style'
+} from './styles'
 export default function HeaderRegister() {
   return (
     <HeaderList>

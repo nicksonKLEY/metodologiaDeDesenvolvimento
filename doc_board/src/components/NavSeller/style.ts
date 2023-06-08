@@ -1,26 +1,17 @@
-import styled, { keyframes } from 'styled-components'
-import { fadeInRight } from 'react-animations'
-
-const FadeInRight = keyframes`${fadeInRight}`
+import styled from 'styled-components'
+import { TbFileUpload } from 'react-icons/tb'
 export const ColorIcon = '#5ef7a0'
 export const ColorActive = '#fff'
 
 export const ViewLink = styled.div`
-  align-items: center;
-  justify-content: space-around;
-  background-color: #32385a;
-  animation: 0.7s ${FadeInRight};
   width: 100%;
-  height: 4rem;
+  height: 30rem;
+  justify-content: flex-start;
   display: flex;
-  border-end-start-radius: 1rem;
-  border-start-start-radius: 1rem;
-  flex-direction: row;
-  margin-left: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
   @media (max-width: 768px) {
     width: 100%;
-    height: 3rem;
-    margin-left: 1rem;
   }
 `
 export const TitleLink = styled.a`
@@ -54,4 +45,19 @@ export const IconView = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const IconSeller = styled(TbFileUpload)`
+  font-size: 2.7rem;
+  color: ${(props) => {
+    return props.style ? (isActive) => (isActive ? '#121212' : '#fff') : 'none'
+  }};
+  &:hover {
+    scale: 1.1;
+    transition: scale 300ms;
+    color: #97ebbb;
+  }
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `

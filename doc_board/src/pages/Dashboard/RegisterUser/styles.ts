@@ -38,12 +38,14 @@ export const ContainerList = styled.div`
 export const ViewList = styled.div`
   width: 97%;
   height: 88%;
-  background-color: #d9d9d9;
+  background-color: #fff;
   box-shadow: 0rem 1rem 1rem #222544;
   margin-top: 2rem;
+  margin-bottom: 4rem;
   align-items: center;
   justify-content: center;
   display: flex;
+  overflow-y: auto;
 `
 export const BtnRegister = styled.button`
   background-color: #1f2442;
@@ -120,7 +122,6 @@ export const FieldName = styled(NameUserHeader)`
   height: 3.5rem;
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -131,7 +132,6 @@ export const FieldName = styled(NameUserHeader)`
 export const FieldCPf = styled(CPFUserHeader)`
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -142,7 +142,6 @@ export const FieldCPf = styled(CPFUserHeader)`
 export const FieldPassword = styled(PasswordUser)`
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -153,7 +152,6 @@ export const FieldPassword = styled(PasswordUser)`
 export const FieldAcessLevel = styled(AcessLeveluserHeader)`
   font-size: 1.7rem;
   background-color: #d8dbe6;
-  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -165,7 +163,6 @@ export const FieldActionPainel = styled(ActionPainel)`
   display: flex;
   flex-direction: row;
   background-color: #d8dbe6;
-  box-shadow: 0rem 1rem 2rem #dddddd;
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
@@ -218,9 +215,9 @@ export const FieldData = styled.div`
 `
 
 export const MsgError = styled.span`
-  margin-top: 0.5rem;
-  color: #e25a2d;
-  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  color: red;
+  font-size: 1rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -234,12 +231,12 @@ export const ViewInput = styled.div`
   align-items: center;
 `
 export const Input = styled.input`
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
   height: 4rem;
   background-color: #fff;
   border-radius: 0.5rem;
-  border: 0.1rem solid;
+  border: 0.1rem solid #000;
   outline: none;
   padding-left: 1rem;
   font-size: 2rem;
@@ -248,12 +245,12 @@ export const Input = styled.input`
   }
 `
 export const Select = styled.select`
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
   height: 4rem;
   background-color: #fff;
   border-radius: 0.5rem;
-  border: 0.1rem solid;
+  border: 0.1rem solid #000;
   outline: none;
   padding-left: 1rem;
   font-size: 2rem;

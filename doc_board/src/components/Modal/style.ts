@@ -16,7 +16,7 @@ export const ContainerModal = styled.div`
 export const ViewModal = styled.div`
   box-sizing: border-box;
   width: 45rem;
-  height: 50rem;
+  height: 45rem;
   background-color: #e6e7e8;
   border-radius: 0.5rem;
   box-shadow: 0rem 0rem 2rem #2225442e;
@@ -59,7 +59,7 @@ export const BtnExit = styled(MdClear)`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(700%, -220%);
+  transform: translate(700%, -140%);
   margin-top: -20rem;
 `
 // FORM
@@ -72,16 +72,21 @@ export const ContainerForm = styled.form`
   flex-direction: column;
 `
 export const BtnCreateNewUser = styled.button`
+  padding: 0.6rem 6rem;
+
   background-color: #40cd7e;
-  border-width: 0.2rem;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 3rem;
+  color: #1f2843;
+
+  border-radius: 1rem;
+  align-self: center;
+  border: 1px solid #6c726e;
+  transition: transform 0.2s;
+
   font-weight: bold;
-  outline: none;
-  height: 4rem;
-  width: 14rem;
-  font-size: 2rem;
-  color: #2b2f44;
+
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
