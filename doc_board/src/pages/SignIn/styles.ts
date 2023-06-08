@@ -33,14 +33,30 @@ export const ViewInput = styled.div`
   margin: 1rem;
   padding: 1rem;
   align-items: center;
-  justify-content: center;
-  border-radius: 0.7rem;
+  justify-content: space-around;
+  border-radius: 0.9rem;
 `
+
 export const Input = styled.input`
   width: 27rem;
   height: 3rem;
   background-color: #32385a;
-  margin-left: 0.5rem;
+  padding-left: 0.7rem;
+  color: #2fe57e;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  font-size: 1.9rem;
+  letter-spacing: 0.2rem;
+  &::placeholder {
+    color: #2fe57e;
+  }
+`
+export const InputPassword = styled.input`
+  width: 24rem;
+  height: 3rem;
+  background-color: #32385a;
+  padding-left: 0.4rem;
   color: #2fe57e;
   border: none;
   outline: none;
