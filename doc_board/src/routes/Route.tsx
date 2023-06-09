@@ -1,11 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import SignIn from '../pages/SignIn'
-// import { SellerRoutes } from './sellerRoutes'
+
 import { TypistRoutes } from './typistRoutes'
 import { MasterRouter } from './masterRouter'
 import { SellerRoutes } from './sellerRoutes'
 import { useAuthContext } from '../hooks/authContext'
-import RouteWrapper from '.'
 
 export default function RoutesAppPrivate() {
   const { userLogged, isLoading } = useAuthContext()
