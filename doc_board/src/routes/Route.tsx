@@ -13,19 +13,21 @@ export default function RoutesAppPrivate() {
     return <div style={{ backgroundColor: '#000' }}>Carregando...</div>
   }
 
-  if (userLogged.length === 0) {
-    return <SignIn />
-  }
+  // if (userLogged.length === 0) {
+  //   return <SignIn />
+  // }
 
   return (
     <BrowserRouter>
-      {userLogged.acessLevel === 'Vendedor' ? (
+      {/* {userLogged.acessLevel === 'Vendedor' ? (
         <SellerRoutes />
       ) : userLogged.acessLevel === 'Digitador' ? (
         <TypistRoutes />
       ) : (
         <MasterRouter />
-      )}
+      )} */}
+
+      <MasterRouter />
     </BrowserRouter>
   )
 }

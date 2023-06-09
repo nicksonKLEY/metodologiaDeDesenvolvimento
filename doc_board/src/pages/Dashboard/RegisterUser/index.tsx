@@ -23,6 +23,7 @@ import { Update } from '../../../services/UseCases/Update'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
+  id: z.string(),
   name: z
     .string()
     .nonempty('O nome é obrigatório')
@@ -53,7 +54,7 @@ export default function RegisterEmployee() {
     formState: { errors },
     reset,
     setValue,
-  } = useForm<FormProps>({ resolver: zodResolver(schema) })
+  } = useForm<FormProps>()
 
   const connection = new FirebaseConnection(ConnectionPages.User)
   const userParser = new UserParser()
@@ -127,7 +128,7 @@ export default function RegisterEmployee() {
         // remove use case
         remove.this(id)
 
-        const updatedElements = elements.filter((item) => item.cpf !== id)
+        const updatedElements = elements.filter((item) => item.id !== id)
 
         setElements(updatedElements)
 
@@ -181,7 +182,7 @@ export default function RegisterEmployee() {
                 <HeaderRegister />
                 <S.ContentInfos>
                   {elements.map((item) => (
-                    <S.FieldData key={item.cpf}>
+                    <S.FieldData key={item.id}>
                       <S.FieldName>{item.name}</S.FieldName>
                       <S.FieldCPf>{item.cpf}</S.FieldCPf>
                       <S.FieldAcessLevel>
@@ -192,7 +193,7 @@ export default function RegisterEmployee() {
                         <S.BtnAction onClick={() => handleEdit(item)}>
                           <BsPencil color={S.ColorIconAction} size={14} />
                         </S.BtnAction>
-                        <S.BtnAction onClick={() => removeItem(item.cpf)}>
+                        <S.BtnAction onClick={() => removeItem(item.id)}>
                           <BsFillTrashFill
                             color={S.ColorIconAction}
                             size={14}

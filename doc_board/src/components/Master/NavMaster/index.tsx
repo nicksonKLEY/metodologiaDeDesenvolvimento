@@ -9,11 +9,7 @@ export default function NavMaster() {
       <Sidbar
         itemNavigate={
           <ViewItems>
-            <SelectItem
-              icon={<IconUser />}
-              txtLink={'Usuário'}
-              linkNav={'/registerEmployee'}
-            />
+            <SelectItem icon={<IconUser />} txtLink={'Usuário'} linkNav={'/'} />
             <SelectItem
               txtLink={'Desempenho'}
               icon={<IconPerformance />}

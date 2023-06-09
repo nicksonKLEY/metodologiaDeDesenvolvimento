@@ -7,7 +7,7 @@ import Error404 from '../components/Erro404'
 export function MasterRouter() {
   return (
     <Routes>
-      <Route path="/registerEmployee" element={<RegisterEmployee />} />
+      <Route path="/" element={<RegisterEmployee />} />
       <Route path="/EmployeePerfomance" element={<EmployeePerformance />} />
       <Route
         path="*"
