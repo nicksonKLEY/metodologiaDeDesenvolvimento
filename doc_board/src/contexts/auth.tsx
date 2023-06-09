@@ -7,6 +7,7 @@ import ConnectionPages from '../services/Connection/ConnectionPages'
 
 interface AuthContextProps {
   singIn: (user: string, password: string) => any
+  signOut: () => any
   userLogged: any
   isLoading: boolean
 }
@@ -38,6 +39,11 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  function signOut() {
+    localStorage.removeItem('loggedInUser')
+    setUserLogged([])
+  }
+
   useEffect(() => {
     async function load() {
       const result = await select.all()
@@ -66,7 +72,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ singIn, userLogged, isLoading }}>
+    <AuthContext.Provider value={{ singIn, userLogged, isLoading, signOut }}>
       {children}
     </AuthContext.Provider>
   )

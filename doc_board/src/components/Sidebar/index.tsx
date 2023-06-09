@@ -19,6 +19,7 @@ import {
   FaBarsIcon,
   CloseSidebar,
 } from './style'
+import { useAuthContext } from '../../hooks/authContext'
 interface namePageProps {
   tPage: string
 
@@ -27,6 +28,8 @@ interface namePageProps {
 
 export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
   const [sidebar, setSidebar] = useState(false)
+
+  const { signOut } = useAuthContext()
 
   const showSiderbar = () => setSidebar(!sidebar)
 
@@ -53,7 +56,7 @@ export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
           </ContainerInfo>
           <ViewElements>{itemNavigate}</ViewElements>
           <Footer>
-            <BtnExit>
+            <BtnExit onClick={signOut}>
               <TxtLink> Sair</TxtLink>
               <IoExitOutline size={35} color={ColorIconOpen} />
             </BtnExit>
