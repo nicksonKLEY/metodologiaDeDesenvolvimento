@@ -4,6 +4,7 @@ import { Read } from '../services/UseCases/Read'
 import { UserParser } from '../services/Connection/Firebase/Parsers/UserParser'
 import { FirebaseConnection } from '../services/Connection/Firebase/FirebaseConnection'
 import ConnectionPages from '../services/Connection/ConnectionPages'
+import { toast } from 'react-toastify'
 
 interface AuthContextProps {
   singIn: (user: string, password: string) => any
@@ -32,11 +33,13 @@ export default function AuthProvider({ children }: AuthProviderProps) {
         (item: any) => item.name === user && item.password === password,
       )
 
-      localStorage.setItem('loggedInUser', JSON.stringify(filteredUser))
-      setUserLogged(filteredUser)
-    } catch (error) {
-      console.error(error)
-    }
+      if (filteredUser) {
+        localStorage.setItem('loggedInUser', JSON.stringify(filteredUser))
+        setUserLogged(filteredUser)
+      } else {
+        toast.error('Usuário ou senha inválidos')
+      }
+    } catch (error) {}
   }
 
   function signOut() {
