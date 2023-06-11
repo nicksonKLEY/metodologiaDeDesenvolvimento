@@ -12,7 +12,7 @@ export default function NavSeller() {
             <SelectItem
               txtLink={'Propostas'}
               icon={<IconSeller />}
-              linkNav={'/seller'}
+              linkNav={'/'}
             />
           </ViewLink>
         }
