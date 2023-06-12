@@ -22,6 +22,11 @@ import {
   AttachmentLabel,
   ErrorMessage,
 } from './styles'
+import { ProposalParser } from '../../services/Connection/Firebase/Parsers/ProposalParser'
+import { FirebaseConnection } from '../../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../../services/Connection/ConnectionPages'
+import { Insert } from '../../services/UseCases/Insert'
+import { ProposalModel } from '../../services/Models/ProposalModel'
 
 const newProposalSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),
@@ -34,6 +39,10 @@ const newProposalSchema = z.object({
 type NewProposalFormInput = z.infer<typeof newProposalSchema>
 
 export function ProposalModal() {
+  const userParser = new ProposalParser()
+  const connection = new FirebaseConnection(ConnectionPages.Proposal)
+  const insert = new Insert(connection, userParser)
+
   const [fileNames, setFileNames] = useState<string[]>([])
 
   const {
@@ -53,6 +62,7 @@ export function ProposalModal() {
   }
 
   function handleNewProposal(data: NewProposalFormInput) {
+    insert.this(data)
     console.log(data)
   }
 

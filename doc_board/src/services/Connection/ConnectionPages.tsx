@@ -3,7 +3,7 @@
 enum ConnectionPages {
     // eslint-disable-next-line prettier/prettier
     User = 'User',
-    Request = 'Request',
+    Proposal = 'Proposal',
     Document = 'Document',
 }
 export default ConnectionPages
