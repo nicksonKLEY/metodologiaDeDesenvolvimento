@@ -12,7 +12,7 @@ export default function NavTypist() {
             <SelectItem
               icon={<IconUser />}
               txtLink={'Digitador'}
-              linkNav={'/typist'}
+              linkNav={'/'}
             />
           </ViewItems>
         }
