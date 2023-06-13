@@ -23,7 +23,7 @@ import { Update } from '../../../services/UseCases/Update'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
-  id: z.string(),
+  id: z.string().optional(),
   name: z
     .string()
     .nonempty('O nome é obrigatório')
@@ -54,7 +54,9 @@ export default function RegisterEmployee() {
     formState: { errors },
     reset,
     setValue,
-  } = useForm<FormProps>()
+  } = useForm<FormProps>({
+    resolver: zodResolver(schema),
+  })
 
   const connection = new FirebaseConnection(ConnectionPages.User)
   const userParser = new UserParser()
@@ -193,7 +195,9 @@ export default function RegisterEmployee() {
                         <S.BtnAction onClick={() => handleEdit(item)}>
                           <BsPencil color={S.ColorIconAction} size={14} />
                         </S.BtnAction>
-                        <S.BtnAction onClick={() => removeItem(item.id)}>
+                        <S.BtnAction
+                          onClick={() => item.id && removeItem(item.id)}
+                        >
                           <BsFillTrashFill
                             color={S.ColorIconAction}
                             size={14}
