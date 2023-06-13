@@ -108,8 +108,9 @@ export const ButtonDownload = styled.button`
 export const WrapperButton = styled.div`
   display: flex;
   width: 100%;
+  gap: 2.5rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   margin-top: 2.3rem;
 `

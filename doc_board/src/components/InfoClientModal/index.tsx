@@ -40,12 +40,12 @@ export function InfoClientModal({ isOpen, onClose }: Props) {
             <InputWrapper>
               <Wrapper>
                 <Label htmlFor="vendedor">Vendedor</Label>
-                <Input mask="" id="vendedor" />
+                <Input mask="" id="vendedor" readOnly />
               </Wrapper>
 
               <Wrapper>
                 <Label htmlFor="banco">Banco</Label>
-                <Input mask="" id="banco" />
+                <Input mask="" id="banco" readOnly />
               </Wrapper>
             </InputWrapper>
 
@@ -101,11 +101,9 @@ export function InfoClientModal({ isOpen, onClose }: Props) {
               <Button>
                 <TextButton>Aprovar</TextButton>
               </Button>
+
               <Button>
-                <TextButton>Pendenciar</TextButton>
-              </Button>
-              <Button>
-                <TextButton>Cancelar</TextButton>
+                <TextButton>Reprovar</TextButton>
               </Button>
             </WrapperButton>
           </Form>

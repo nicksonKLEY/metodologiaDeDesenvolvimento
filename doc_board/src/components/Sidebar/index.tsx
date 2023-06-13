@@ -20,6 +20,8 @@ import {
   CloseSidebar,
 } from './style'
 import { useAuthContext } from '../../hooks/authContext'
+import { useNavigate } from 'react-router-dom'
+
 interface namePageProps {
   tPage: string
 
@@ -30,6 +32,12 @@ export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
   const [sidebar, setSidebar] = useState(false)
 
   const { signOut } = useAuthContext()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    signOut()
+    navigate('/')
+  }
 
   const showSiderbar = () => setSidebar(!sidebar)
 
@@ -56,7 +64,7 @@ export default function Sidbar({ tPage, itemNavigate }: namePageProps) {
           </ContainerInfo>
           <ViewElements>{itemNavigate}</ViewElements>
           <Footer>
-            <BtnExit onClick={signOut}>
+            <BtnExit onClick={handleSignOut}>
               <TxtLink> Sair</TxtLink>
               <IoExitOutline size={35} color={ColorIconOpen} />
             </BtnExit>

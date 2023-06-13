@@ -14,13 +14,7 @@ export default function Seller() {
       <NavSeller />
       <Container>
         <Content>
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <button>Inserir Proposta</button>
-            </Dialog.Trigger>
-
-            <ProposalModal />
-          </Dialog.Root>
+          <ProposalModal />
 
           <ContainerStatus>
             {dataSituation.map((proposal) => (
