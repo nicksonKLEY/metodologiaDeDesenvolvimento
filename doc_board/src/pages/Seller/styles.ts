@@ -22,24 +22,6 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   padding-top: 3rem;
-
-  > button {
-    font-size: 1.5rem;
-    background: #1f2442;
-    color: #38ac72;
-    font-weight: normal;
-
-    padding: 0.8rem 1.4rem;
-
-    border: none;
-    border-radius: 0.6rem;
-    cursor: pointer;
-
-    &:hover {
-      scale: 1.1;
-      transition: scale 300ms;
-    }
-  }
 `
 
 export const ContainerStatus = styled.div`

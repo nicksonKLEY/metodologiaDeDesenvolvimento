@@ -14,6 +14,7 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 export const Content = styled(Dialog.Content)`
   min-width: 29rem;
+  max-width: 45rem;
   border-radius: 6px;
   padding: 4rem 2rem;
   background-color: #e6e7e8;
@@ -41,6 +42,24 @@ export const Content = styled(Dialog.Content)`
         font-size: 1.3rem;
       }
     }
+  }
+`
+
+export const ButtonOpenModal = styled('button')`
+  font-size: 1.5rem;
+  background: #1f2442;
+  color: #38ac72;
+  font-weight: normal;
+
+  padding: 0.8rem 1.4rem;
+
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+    transition: scale 300ms;
   }
 `
 
@@ -124,8 +143,8 @@ export const CloseButton = styled(Dialog.Close)`
   position: absolute;
   background: #fff;
   border: none;
-  top: -0.5rem;
-  right: -0.5rem;
+  top: -1rem;
+  right: -1rem;
   line-height: 0;
   cursor: pointer;
 

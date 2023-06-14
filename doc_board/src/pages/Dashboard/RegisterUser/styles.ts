@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import InputMask from 'react-input-mask'
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -122,7 +124,7 @@ export const FieldName = styled(NameUserHeader)`
   height: 3.5rem;
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     font-size: 1.2rem;
   }
   @media (max-width: 568px) {
@@ -132,7 +134,7 @@ export const FieldName = styled(NameUserHeader)`
 export const FieldCPf = styled(CPFUserHeader)`
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     font-size: 1.2rem;
   }
   @media (max-width: 568px) {
@@ -142,7 +144,7 @@ export const FieldCPf = styled(CPFUserHeader)`
 export const FieldPassword = styled(PasswordUser)`
   font-size: 1.8rem;
   background-color: #d8dbe6;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     font-size: 1.2rem;
   }
   @media (max-width: 568px) {
@@ -152,7 +154,7 @@ export const FieldPassword = styled(PasswordUser)`
 export const FieldAcessLevel = styled(AcessLeveluserHeader)`
   font-size: 1.7rem;
   background-color: #d8dbe6;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     font-size: 1.2rem;
   }
   @media (max-width: 568px) {
@@ -182,9 +184,10 @@ export const BtnAction = styled.button`
   &:hover {
     background-color: #ffffff;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     height: 2rem;
     width: 2rem;
+    border: none;
   }
   @media (max-width: 568px) {
     height: 1.5rem;
@@ -231,6 +234,20 @@ export const ViewInput = styled.div`
   align-items: center;
 `
 export const Input = styled.input`
+  margin-top: 1rem;
+  width: 100%;
+  height: 4rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #000;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 2rem;
+  &::placeholder {
+    color: #060606;
+  }
+`
+export const InputCPFMask = styled(InputMask)`
   margin-top: 1rem;
   width: 100%;
   height: 4rem;
