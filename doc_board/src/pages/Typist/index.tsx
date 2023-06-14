@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   ContainerMain,
@@ -10,36 +10,66 @@ import {
 
 import TypistContainer from '../../components/Typist/ContainerTypist'
 import { InfoClientModal } from '../../components/InfoClientModal'
+import { ProposalModel } from '../../services/Models/ProposalModel'
+import { FirebaseConnection } from '../../services/Connection/Firebase/FirebaseConnection'
+import ConnectionPages from '../../services/Connection/ConnectionPages'
+import { ProposalParser } from '../../services/Connection/Firebase/Parsers/ProposalParser'
+import { Read } from '../../services/UseCases/Read'
+import { ProposalStatusValue } from '../../services/Connection/Firebase/Parsers/ProposalStatus'
 
 export default function Typist() {
   const [modal, setModal] = useState(false)
-  const data = [
-    { id: '1', name: 'Danielly', bank: 'Daycoval', status: 'Novo' },
-    { id: '2', name: 'Jilza', bank: 'Daycoval', status: 'Novo' },
-    { id: '3', name: 'VItoria', bank: 'Ole', status: 'Pendente' },
-    { id: '4', name: 'Lucius', bank: 'Pan', status: 'Pendente' },
-    { id: '5', name: 'Julia', bank: 'pan', status: 'Pendente' },
-  ]
-  function modalOPen(id: string) {
+  const [proposal, setProposal] = useState<ProposalModel | null>(null)
+  const [elements, setElements] = useState<ProposalModel[]>([])
+
+  function modalOPen(proposal: ProposalModel) {
     setModal(!modal)
-    console.log(id)
+    setProposal(proposal)
   }
+
+  const connection = new FirebaseConnection(ConnectionPages.Proposal)
+  const proposalParser = new ProposalParser()
+  const select = new Read(connection, proposalParser)
+
+  const reset = async () => {
+    setModal(!modal)
+    fetchData()
+  }
+
+  const fetchData = async () => {
+    const result = await select.all()
+    setElements(result)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <ContainerMain>
-      <InfoClientModal isOpen={modal} onClose={() => setModal(!modal)} />
+      <InfoClientModal
+        proposal={proposal}
+        isOpen={modal}
+        onClose={() => reset()}
+      />
 
       <TypistContainer>
-        {data.map((item) => (
+        {elements.map((item, index) => (
           <AnalizedElement
-            key={item.id}
+            key={index}
             style={{
-              color: item.status === 'Pendente' ? '#F1C889' : '#fff',
+              color:
+                ProposalStatusValue.getString(item.proposalStatus) !== 'waiting'
+                  ? '#F1C889'
+                  : '#fff',
             }}
-            onClick={() => modalOPen(item.name)}
+            onClick={() => modalOPen(item)}
           >
-            <FieldClient>{item.name} </FieldClient>{' '}
-            <FieldBank> {item.bank}</FieldBank>{' '}
-            <FieldStatus>{item.status}</FieldStatus>
+            <FieldClient>{item.clientName} </FieldClient>{' '}
+            <FieldBank> {item.bankName}</FieldBank>{' '}
+            <FieldStatus>
+              {ProposalStatusValue.getString(item.proposalStatus)}
+            </FieldStatus>
           </AnalizedElement>
         ))}
       </TypistContainer>

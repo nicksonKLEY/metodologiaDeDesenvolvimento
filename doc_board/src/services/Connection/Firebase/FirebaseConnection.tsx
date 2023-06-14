@@ -31,7 +31,7 @@ export class FirebaseConnection implements Connection {
   }
 
   async select(identifier: string): Promise<any> {
-    const query = doc(collection(firebaseDB, this.page.valueOf(), identifier))
+    const query = doc(firebaseDB, this.page.valueOf(), identifier)
     return await getDoc(query)
   }
 

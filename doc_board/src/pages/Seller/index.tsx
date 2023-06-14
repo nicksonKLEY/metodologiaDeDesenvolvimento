@@ -27,12 +27,16 @@ export default function Seller() {
 
   const select = new Read(connection, proposalParser)
 
+  const reset = async () => {
+    fetchData()
+  }
+
+  const fetchData = async () => {
+    const result = await select.all()
+    setElements(result)
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await select.all()
-      setElements(result)
-      console.log(result)
-    }
     fetchData()
   }, [])
 
@@ -41,7 +45,7 @@ export default function Seller() {
       <NavSeller />
       <Container>
         <Content>
-          <ProposalModal />
+          <ProposalModal clousure={reset} />
 
           <ContainerStatus>
             {elements.map((proposal, index) => (

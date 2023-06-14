@@ -40,7 +40,10 @@ export class ProposalParser implements ModelParser {
       clientCell: model.phone,
       bankName: model.bank,
       proposalValor: model.price,
-      proposalStatus: ProposalStatus.Waiting,
+      proposalStatus:
+        model.proposalStatus === null
+          ? ProposalStatus.Waiting
+          : model.proposalStatus,
       vendorID: model.vendorID,
     }
   }

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
@@ -10,7 +9,7 @@ import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import NavMaster from '../../../components/Master/NavMaster'
 import Modal from '../../../components/Modal/Modal'
-import Swal from 'sweetalert2'
+
 // Connection
 import { FirebaseConnection } from '../../../services/Connection/Firebase/FirebaseConnection'
 import ConnectionPages from '../../../services/Connection/ConnectionPages'
@@ -24,12 +23,11 @@ import { Update } from '../../../services/UseCases/Update'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   name: z
     .string()
-    .email('Email inválido')
-    .nonempty('O email é obrigatório')
-    .min(3, 'O email é obrigatório'),
+    .nonempty('O nome é obrigatório')
+    .min(3, 'O nome é obrigatório'),
   cpf: z
     .string()
     .nonempty('O CPF é obrigátório')
@@ -56,9 +54,7 @@ export default function RegisterEmployee() {
     formState: { errors },
     reset,
     setValue,
-  } = useForm<FormProps>({
-    resolver: zodResolver(schema),
-  })
+  } = useForm<FormProps>()
 
   const connection = new FirebaseConnection(ConnectionPages.User)
   const userParser = new UserParser()
@@ -125,42 +121,28 @@ export default function RegisterEmployee() {
     }
   }
 
-
   const removeItem = (id: string) => {
+    const message = window.confirm('Deseja realmente excluir esse funcionário?')
+    if (message === true) {
+      try {
+        // remove use case
+        remove.this(id)
 
-    Swal.fire({
-      title: 'Deseja excluir este usuário?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#16b070',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Não!',
-      confirmButtonText: 'Sim, excluir!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        try {
-          // remove use case
-          remove.this(id)
+        const updatedElements = elements.filter((item) => item.id !== id)
 
-          const updatedElements = elements.filter((item) => item.id !== id)
+        setElements(updatedElements)
 
-          setElements(updatedElements)
-
-          Swal.fire(
-            'Excluído!',
-            'O Funcionário foi excluído com sucesso.',
-            'success'
-          )
-        } catch {
-          toast.error(`Falha ao apagar`, {
-            position: toast.POSITION.TOP_RIGHT,
-            autoClose: 2000,
-          })
-        }
-
+        toast.success(`Funcionário excluído com sucesso`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+        })
+      } catch {
+        toast.error(`Falha ao apagar`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+        })
       }
-    })
-
+    }
   }
 
   const handleEdit = (employee: FormProps) => {
@@ -211,9 +193,7 @@ export default function RegisterEmployee() {
                         <S.BtnAction onClick={() => handleEdit(item)}>
                           <BsPencil color={S.ColorIconAction} size={14} />
                         </S.BtnAction>
-                        <S.BtnAction
-                          onClick={() => item.id && removeItem(item.id)}
-                        >
+                        <S.BtnAction onClick={() => removeItem(item.id)}>
                           <BsFillTrashFill
                             color={S.ColorIconAction}
                             size={14}
@@ -235,24 +215,14 @@ export default function RegisterEmployee() {
           TextButton={'Cadastrar'}
           conteudo={
             <S.ViewInput>
-
-              <S.Input
-                {...register('name')}
-                type="email"
-                placeholder="Email" />
+              <S.Input {...register('name')} type="text" placeholder="Email" />
               {errors.name?.message && (
                 <S.MsgError>{errors.name?.message}</S.MsgError>
               )}
-
-              <S.InputCPFMask
-                mask={"999.999.999-99"}
-                {...register('cpf')}
-                type="text"
-                placeholder="CPF" />
+              <S.Input {...register('cpf')} type="text" placeholder="CPF" />
               {errors.cpf?.message && (
                 <S.MsgError>{errors.cpf?.message}</S.MsgError>
               )}
-
               <S.Input
                 {...register('password')}
                 type="text"
@@ -261,7 +231,6 @@ export default function RegisterEmployee() {
               {errors.password?.message && (
                 <S.MsgError>{errors.password?.message}</S.MsgError>
               )}
-
               <S.Select {...register('acessLevel')} defaultValue="Digitador">
                 <option value="Digitador">Digitador</option>
                 <option value="Vendedor">Vendedor</option>
@@ -277,6 +246,7 @@ export default function RegisterEmployee() {
           submitAction={handleSubmit(handleForm)}
         />
       )}
+
       <ToastContainer />
     </S.ContainerMain>
   )

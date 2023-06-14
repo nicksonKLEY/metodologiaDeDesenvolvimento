@@ -29,6 +29,7 @@ import { FirebaseConnection } from '../../services/Connection/Firebase/FirebaseC
 import ConnectionPages from '../../services/Connection/ConnectionPages'
 import { Insert } from '../../services/UseCases/Insert'
 import { ProposalModel } from '../../services/Models/ProposalModel'
+import { ProposalStatus } from '../../services/Connection/Firebase/Parsers/ProposalStatus'
 
 const newProposalSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),
@@ -40,7 +41,11 @@ const newProposalSchema = z.object({
 
 type NewProposalFormInput = z.infer<typeof newProposalSchema>
 
-export function ProposalModal() {
+interface clousureProp {
+  clousure: () => void
+}
+
+export function ProposalModal({ clousure }: clousureProp) {
   const userParser = new ProposalParser()
   const connection = new FirebaseConnection(ConnectionPages.Proposal)
   const insert = new Insert(connection, userParser)
@@ -66,24 +71,22 @@ export function ProposalModal() {
     }
   }
 
-  function handleNewProposal(data: NewProposalFormInput) {
-<<<<<<< HEAD
+  async function handleNewProposal(data: NewProposalFormInput) {
     const newData: any = data
 
     const loggedInUser = localStorage.getItem('loggedInUser')
     if (loggedInUser) {
       const user = JSON.parse(loggedInUser)
       newData.vendorID = user.id
+      newData.proposalStatus = ProposalStatus.Waiting
 
-      insert.this(data)
+      insert.this(newData)
     }
-    console.log(loggedInUser)
-=======
-    console.log(data)
     setIsOpen(false)
     reset()
     setFileNames([])
->>>>>>> integration
+
+    await clousure()
   }
 
   return (

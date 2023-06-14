@@ -11,7 +11,7 @@ export class Update {
     this.model = model
   }
 
-  async this(identifier: string, form: FormProps) {
+  async this(identifier: string, form: any) {
     this.connection.update(identifier, this.model.toConnection(form))
   }
 }
