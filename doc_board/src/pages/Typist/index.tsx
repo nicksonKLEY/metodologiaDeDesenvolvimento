@@ -54,31 +54,36 @@ export default function Typist() {
       />
 
       <TypistContainer>
-        {elements.filter((item) => {
-          if(
-            ProposalStatusValue.getString(item.proposalStatus ) === 'waiting'
-            || ProposalStatusValue.getString(item.proposalStatus) === 'pending'
-          ) {
-            return item
-          }
-        }).map((item, index) => (
-          <AnalizedElement
-            key={index}
-            style={{
-              color:
-                ProposalStatusValue.getString(item.proposalStatus) !== 'waiting'
-                  ? '#F1C889'
-                  : '#fff',
-            }}
-            onClick={() => modalOPen(item)}
-          >
-            <FieldClient>{item.clientName} </FieldClient>{' '}
-            <FieldBank> {item.bankName}</FieldBank>{' '}
-            <FieldStatus>
-              {ProposalStatusValue.getString(item.proposalStatus)}
-            </FieldStatus>
-          </AnalizedElement>
-        ))}
+        {elements
+          // eslint-disable-next-line array-callback-return
+          .filter((item) => {
+            if (
+              ProposalStatusValue.getString(item.proposalStatus) ===
+                'waiting' ||
+              ProposalStatusValue.getString(item.proposalStatus) === 'pending'
+            ) {
+              return item
+            }
+          })
+          .map((item, index) => (
+            <AnalizedElement
+              key={index}
+              style={{
+                color:
+                  ProposalStatusValue.getString(item.proposalStatus) !==
+                  'waiting'
+                    ? '#F1C889'
+                    : '#fff',
+              }}
+              onClick={() => modalOPen(item)}
+            >
+              <FieldClient>{item.clientName} </FieldClient>{' '}
+              <FieldBank> {item.bankName}</FieldBank>{' '}
+              <FieldStatus>
+                {ProposalStatusValue.getString(item.proposalStatus)}
+              </FieldStatus>
+            </AnalizedElement>
+          ))}
       </TypistContainer>
     </ContainerMain>
   )
