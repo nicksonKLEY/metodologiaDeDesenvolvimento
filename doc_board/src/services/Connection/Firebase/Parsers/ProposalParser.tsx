@@ -5,7 +5,7 @@ import {
 } from 'firebase/firestore'
 import { ModelParser } from '../../../Models/ModelParser'
 import { ProposalModel } from '../../../Models/ProposalModel'
-import ProposalStatus from './ProposalStatus'
+import { ProposalStatus } from './ProposalStatus'
 
 const FirestoreConverter = {
   converter(identifier: string, data: any): ProposalModel {
@@ -41,7 +41,7 @@ export class ProposalParser implements ModelParser {
       bankName: model.bank,
       proposalValor: model.price,
       proposalStatus: ProposalStatus.Waiting,
-      vendorID: 'any',
+      vendorID: model.vendorID,
     }
   }
 }

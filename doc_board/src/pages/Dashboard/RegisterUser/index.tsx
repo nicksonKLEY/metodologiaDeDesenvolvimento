@@ -23,7 +23,7 @@ import { Update } from '../../../services/UseCases/Update'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
-  id: z.string(),
+  id: z.string().optional(),
   name: z
     .string()
     .nonempty('O nome é obrigatório')

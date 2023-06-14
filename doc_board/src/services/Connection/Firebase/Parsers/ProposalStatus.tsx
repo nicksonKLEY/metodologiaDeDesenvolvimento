@@ -6,4 +6,23 @@ enum ProposalStatus {
   Refused = 9,
 }
 
-export default ProposalStatus
+class ProposalStatusValue {
+  static getString(
+    value: Number,
+  ): 'waiting' | 'pending' | 'typing' | 'refused' {
+    switch (value) {
+      case 0:
+        return 'waiting'
+      case 1:
+        return 'pending'
+      case 2:
+        return 'typing'
+      case 9:
+        return 'refused'
+      default:
+        return 'waiting'
+    }
+  }
+}
+
+export { ProposalStatus, ProposalStatusValue }

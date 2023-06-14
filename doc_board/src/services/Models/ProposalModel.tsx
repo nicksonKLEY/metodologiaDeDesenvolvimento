@@ -1,25 +1,25 @@
 export class ProposalModel {
   id: String
 
-  vendorID: String
+  vendorID: string
 
-  clientName: String
-  clientCPF: String
-  clientCell: String
+  clientName: string
+  clientCPF: string
+  clientCell: string
 
-  bankName: String
+  bankName: string
 
-  proposalValor: String
+  proposalValor: string
   proposalStatus: Number
 
   constructor(
-    id: String,
-    vendorID: String,
-    clientName: String,
-    clientCPF: String,
-    clientCell: String,
-    bankName: String,
-    proposalValor: String,
+    id: string,
+    vendorID: string,
+    clientName: string,
+    clientCPF: string,
+    clientCell: string,
+    bankName: string,
+    proposalValor: string,
     proposalStatus: Number,
   ) {
     this.id = id

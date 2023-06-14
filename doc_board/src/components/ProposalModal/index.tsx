@@ -62,8 +62,16 @@ export function ProposalModal() {
   }
 
   function handleNewProposal(data: NewProposalFormInput) {
-    insert.this(data)
-    console.log(data)
+    const newData: any = data
+
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser)
+      newData.vendorID = user.id
+
+      insert.this(data)
+    }
+    console.log(loggedInUser)
   }
 
   return (
