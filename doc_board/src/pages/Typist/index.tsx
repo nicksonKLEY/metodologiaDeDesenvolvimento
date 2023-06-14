@@ -54,7 +54,14 @@ export default function Typist() {
       />
 
       <TypistContainer>
-        {elements.map((item, index) => (
+        {elements.filter((item) => {
+          if(
+            ProposalStatusValue.getString(item.proposalStatus ) === 'waiting'
+            || ProposalStatusValue.getString(item.proposalStatus) === 'pending'
+          ) {
+            return item
+          }
+        }).map((item, index) => (
           <AnalizedElement
             key={index}
             style={{
